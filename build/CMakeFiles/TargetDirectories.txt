@@ -1,0 +1,7 @@
+/Users/sdporzio/CurrentWork/build/CMakeFiles/install/local.dir
+/Users/sdporzio/CurrentWork/build/CMakeFiles/install/strip.dir
+/Users/sdporzio/CurrentWork/build/CMakeFiles/install.dir
+/Users/sdporzio/CurrentWork/build/CMakeFiles/list_install_components.dir
+/Users/sdporzio/CurrentWork/build/CMakeFiles/rebuild_cache.dir
+/Users/sdporzio/CurrentWork/build/CMakeFiles/edit_cache.dir
+/Users/sdporzio/CurrentWork/build/CMakeFiles/ptfe_runEvent.dir
