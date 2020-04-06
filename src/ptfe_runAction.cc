@@ -7,6 +7,7 @@
 
 ptfe_runAction::ptfe_runAction() : G4UserRunAction()
 {
+
   // Create the root manager
   auto analysisManager = G4Analysis::ManagerInstance("root");
   G4cout << "Using " << analysisManager->GetType() << G4endl;
@@ -17,19 +18,38 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   analysisManager->SetFileName("ptfe");
 
   // Create the metadata branch
-  analysisManager->CreateNtuple("metadata", "Metadata"); // ntuple-ID 0
-  analysisManager->CreateNtupleIColumn("surface_activateRoughness"); //c-ID 0
-  analysisManager->CreateNtupleIColumn("surface_numberFeaturesSide"); //c-ID 1
-  analysisManager->CreateNtupleDColumn("surface_baseWidth"); //c-ID 2
-  analysisManager->CreateNtupleDColumn("surface_featuresHeight"); //c-ID 3
-  analysisManager->CreateNtupleDColumn("surface_featuresSpacing"); //c-ID 4
+  analysisManager->CreateNtuple("metadata", "Metadata");              //ntuple-ID 0
+  analysisManager->CreateNtupleIColumn("seed_run");
+  analysisManager->CreateNtupleIColumn("surface_activateRoughness");
+  analysisManager->CreateNtupleIColumn("surface_numberFeaturesSide");
+  analysisManager->CreateNtupleDColumn("surface_baseWidth");        
+  analysisManager->CreateNtupleDColumn("surface_featuresHeight");   
+  analysisManager->CreateNtupleDColumn("surface_featuresSpacing");  
   analysisManager->FinishNtuple();
 
   // Create the data branch
-  analysisManager->CreateNtuple("data", "Data"); // ntuple-ID 1
-  analysisManager->CreateNtupleIColumn("Dc1Hits");  //c-ID 0
-  analysisManager->CreateNtupleIColumn("Dc2Hits");  //c-ID 1
-  analysisManager->CreateNtupleDColumn("ECEnergy"); //c-ID 2
+  analysisManager->CreateNtuple("data", "Data");             //ntuple-ID 1
+  analysisManager->CreateNtupleIColumn("event_number");
+  analysisManager->CreateNtupleIColumn("seed_event_index");
+  analysisManager->CreateNtupleIColumn("seed_event1");
+  analysisManager->CreateNtupleIColumn("seed_event2");
+
+  analysisManager->CreateNtupleIColumn("nhits_world");  
+  analysisManager->CreateNtupleIColumn("nhits_cushion");
+  analysisManager->CreateNtupleIColumn("nhits_wall");   
+  analysisManager->CreateNtupleIColumn("nhits_surface");
+  analysisManager->CreateNtupleIColumn("nhits_in");     
+  analysisManager->CreateNtupleIColumn("nhits_out"); 
+
+  analysisManager->CreateNtupleDColumn("edep_world");   
+  analysisManager->CreateNtupleDColumn("edep_cushion"); 
+  analysisManager->CreateNtupleDColumn("edep_wall");    
+  analysisManager->CreateNtupleDColumn("edep_surface"); 
+  analysisManager->CreateNtupleDColumn("edep_in");       
+  analysisManager->CreateNtupleDColumn("edep_out");      
+
+
+
   analysisManager->FinishNtuple();
 }
 
@@ -52,6 +72,7 @@ void ptfe_runAction::EndOfRunAction(const G4Run* run)
 
   // Save metadata to the ROOT file
   auto analysisManager = G4AnalysisManager::Instance(); G4int i = 0;
+  analysisManager->FillNtupleIColumn(0,i,CLHEP::HepRandom::getTheSeed()); i+=1;
   analysisManager->FillNtupleIColumn(0,i,myDetector->ActivateRoughness()); i+=1;
   analysisManager->FillNtupleIColumn(0,i,myDetector->NumberFeaturesSide()); i+=1;
   analysisManager->FillNtupleDColumn(0,i,myDetector->BaseWidth()); i+=1;

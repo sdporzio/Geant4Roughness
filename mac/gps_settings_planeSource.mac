@@ -1,5 +1,5 @@
 /gps/particle proton
-/gps/energy 50 keV
+/gps/energy 800 keV
 /gps/pos/type Plane
 /gps/pos/shape Square
 /gps/pos/rot1 0 1 0

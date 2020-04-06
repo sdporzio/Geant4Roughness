@@ -2,6 +2,7 @@
 #include "ptfe_primaryGeneratorAction.hh"
 #include "ptfe_runAction.hh"
 #include "ptfe_eventAction.hh"
+#include "ptfe_steppingAction.hh"
 
 #include "G4ParticleGun.hh"
 #include "G4Proton.hh"
@@ -19,6 +20,9 @@ void ptfe_actionInitialization::Build() const
   ptfe_runAction* runAction = new ptfe_runAction;
   SetUserAction(runAction);
 
-  ptfe_eventAction* eventAction = new ptfe_eventAction;
+  ptfe_eventAction* eventAction = new ptfe_eventAction(runAction);
   SetUserAction(eventAction);
+
+  ptfe_steppingAction* steppingAction = new ptfe_steppingAction(eventAction);
+  SetUserAction(steppingAction);
 }

@@ -3,7 +3,4 @@
 /gps/direction 1 0 -0
 ########################
 # In the spike
-/gps/position -50 0 3 um
-########################
-# In the volume
-#/gps/position -50 0 -10 um
+/gps/position -50 -2 5 um

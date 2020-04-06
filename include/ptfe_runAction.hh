@@ -19,6 +19,7 @@ class ptfe_runAction : public G4UserRunAction
 
   private:
     ptfe_eventAction* fEventAction;
+    G4int fRunSeed;
 };
 
 #endif

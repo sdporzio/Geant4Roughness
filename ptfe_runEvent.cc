@@ -14,6 +14,10 @@
 // MAIN FUNCTION
 int main(int argc,char** argv)
 {
+  CLHEP::HepRandom::setTheEngine(new CLHEP::RanecuEngine());
+  CLHEP::HepRandom::setTheSeed(124);
+  G4bool visual = false;
+
   // INITIALIZE THE UI CLASS
   G4UIExecutive* ui = 0;
   ui = new G4UIExecutive(argc, argv);
@@ -36,20 +40,21 @@ int main(int argc,char** argv)
   // OPTIONAL CLASSES
   // Visualization class
   G4VisManager* visManager = new G4VisExecutive;
-  visManager->Initialize();
+  if(visual) visManager->Initialize();
 
   // UI class
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
   UImanager->ApplyCommand("/control/execute initialize.mac");
-  ui->SessionStart(); // Uncomment this to enable UI
-
+  if(visual) ui->SessionStart(); // Uncomment this to enable UI
 
   // BATCH RUN
   // Run simulation
   runManager->Initialize();
-  runManager->BeamOn(1);
+  runManager->BeamOn(100);
 
   delete ui;
-  delete visManager;
   delete runManager;
+  delete visManager;
+
+
 }
