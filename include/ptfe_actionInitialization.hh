@@ -4,10 +4,10 @@
 
 class ptfe_actionInitialization : public G4VUserActionInitialization
 {
-public:
+  public:
     ptfe_actionInitialization();
     virtual ~ptfe_actionInitialization();
     virtual void Build() const;
-};
+  };
 
 #endif

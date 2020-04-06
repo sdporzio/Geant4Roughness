@@ -15,6 +15,12 @@ class ptfe_detectorConstruction : public G4VUserDetectorConstruction
 
     virtual G4VPhysicalVolume* Construct();
 
+    G4bool ActivateRoughness() const { return fActivateRoughness; }
+    G4int NumberFeaturesSide() const { return fNumberFeaturesSide; }
+    G4double FeaturesHeight() const { return fFeaturesHeight; }
+    G4double BaseWidth() const { return fBaseWidth; }
+    G4double FeaturesSpacing() const { return fFeaturesSpacing; }
+
   private:
     G4GenericMessenger* fMessenger; // Generic messenger class
 

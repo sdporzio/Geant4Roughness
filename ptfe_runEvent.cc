@@ -23,14 +23,15 @@ int main(int argc,char** argv)
 
   // MANDATORY USER INITIALIZATION CLASSES
   // Detector class
-  runManager->SetUserInitialization(new ptfe_detectorConstruction());
+  ptfe_detectorConstruction* myDetector = new ptfe_detectorConstruction();
+  runManager->SetUserInitialization(myDetector);
   // Physics list class
-  G4VModularPhysicsList* physicsList = new QBBC;
-  physicsList->SetVerboseLevel(1);
-  runManager->SetUserInitialization(physicsList);
+  G4VModularPhysicsList* myPhysicsList = new QBBC;
+  myPhysicsList->SetVerboseLevel(1);
+  runManager->SetUserInitialization(myPhysicsList);
   // Action class
-  runManager->SetUserInitialization(new ptfe_actionInitialization());
-
+  ptfe_actionInitialization* myAction = new ptfe_actionInitialization();
+  runManager->SetUserInitialization(myAction);
 
   // OPTIONAL CLASSES
   // Visualization class
@@ -40,13 +41,13 @@ int main(int argc,char** argv)
   // UI class
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
   UImanager->ApplyCommand("/control/execute initialize.mac");
-  ui->SessionStart();
+  // ui->SessionStart(); // Uncomment this to enable UI
+
 
   // BATCH RUN
-  // runManager->Initialize();
-  // runManager->BeamOn(1);
-
-  printf("All good so far.\n");
+  // Run simulation
+  runManager->Initialize();
+  runManager->BeamOn(1);
 
   delete ui;
   delete visManager;

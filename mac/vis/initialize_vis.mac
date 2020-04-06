@@ -66,4 +66,4 @@
 /vis/geometry/set/visibility World 0 false
 #-> Re-establish auto-refreshing and verbosity
 /vis/viewer/set/autoRefresh true
-/vis/verbose warnings
+#/vis/verbose warnings

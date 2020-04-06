@@ -1,6 +1,6 @@
 /run/verbose 2
 /ptfe/surface/activateRoughness true
-/ptfe/surface/numberFeaturesSide 20
+/ptfe/surface/numberFeaturesSide 27
 /ptfe/surface/baseWidth 3 um
 /ptfe/surface/featuresHeight 10 um
 /ptfe/surface/featuresSpacing 0.1 um
@@ -15,6 +15,7 @@
 /gps/pos/halfx 5 um
 /gps/pos/halfy 5 um
 /gps/ang/type cos
+/analysis/setFileName test.root
 /run/initialize
 /control/execute mac/vis/initialize_vis.mac
 /vis/open OGL 600x600-0+0
@@ -72,31 +73,5 @@
 /vis/scene/notifyHandlers
 /vis/viewer/set/autoRefresh true
 /vis/viewer/refresh
-/vis/verbose warnings
 /run/beamOn 1
 /vis/scene/notifyHandlers scene-0
-/run/beamOn 100
-/vis/viewer/set/style s
-/vis/viewer/refresh
-/vis/viewer/set/hiddenEdge 0
-/vis/viewer/refresh
-/vis/viewer/set/picking false
-/vis/viewer/refresh
-/vis/viewer/set/picking false
-/vis/viewer/refresh
-/vis/viewer/set/picking false
-/vis/viewer/refresh
-/vis/viewer/set/picking false
-/vis/viewer/refresh
-/vis/viewer/set/style s
-/vis/viewer/refresh
-/vis/viewer/set/hiddenEdge 1
-/vis/viewer/refresh
-/vis/viewer/set/style s
-/vis/viewer/refresh
-/vis/viewer/set/hiddenEdge 1
-/vis/viewer/refresh
-/vis/viewer/set/style w
-/vis/viewer/refresh
-/vis/viewer/set/hiddenEdge 1
-/vis/viewer/refresh

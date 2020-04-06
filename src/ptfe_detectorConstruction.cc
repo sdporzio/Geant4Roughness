@@ -1,6 +1,7 @@
 #include "ptfe_detectorConstruction.hh"
 #include "ptfe_surfaceParameterisation.hh"
 
+
 #include "G4RunManager.hh"
 #include "G4NistManager.hh"
 #include "G4GenericMessenger.hh"
@@ -10,6 +11,7 @@
 #include "G4SystemOfUnits.hh"
 #include "G4Box.hh"
 #include "G4Trd.hh"
+#include "g4analysis.hh"
 
 // Construct/Deconstructor
 ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruction(),
@@ -36,7 +38,6 @@ ptfe_detectorConstruction::~ptfe_detectorConstruction()
 // Construct function
 G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
 {
-  printf("Params:%i,%.1f,%.1f,%.1f\n",fNumberFeaturesSide,fFeaturesSpacing,fFeaturesHeight,fBaseWidth);
   // HARD-CODED SETTINGS
   // Option to switch on/off checking of volumes overlaps
   G4bool checkOverlaps = true;
@@ -123,7 +124,5 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
                           pyramidParam,    // The parametrisation
                           checkOverlaps); // checking overlaps 
   }
-
-  printf("Detector built.\n");
   return physWorld;
 }
