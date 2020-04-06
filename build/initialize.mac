@@ -1,27 +1,9 @@
-###########################
-# Set some default verbose
-/control/verbose 2
-/control/saveHistory
-/run/verbose 2
-###########################
-# Surface settings
-/ptfe/surface/activateRoughness true
-/ptfe/surface/numberFeaturesSide 27
-/ptfe/surface/baseWidth 3 um
-/ptfe/surface/featuresHeight 10 um
-/ptfe/surface/featuresSpacing 0.1 um
-###########################
-# Single particle setting
-/control/execute mac/gps_settings.mac
-###########################
-# Analysis settings
-/analysis/setFileName test.root
-###########################
-# Initialize kernel
+/control/execute mac/verbose_settings.mac
+/control/execute mac/surface_settings.mac
+#/control/execute mac/gps_settings_singleProton_cutTransverse1.mac
+/control/execute mac/gps_settings_singleProton_cutTransverse2.mac
+/control/execute mac/analysis_settings.mac
+
 /run/initialize
-###########################
-# Visualization settings
-/control/execute mac/vis/initialize_vis.mac
-###########################
-# Run particle
+/control/execute mac/vis_settings.mac
 /run/beamOn 1

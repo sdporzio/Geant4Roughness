@@ -41,7 +41,7 @@ int main(int argc,char** argv)
   // UI class
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
   UImanager->ApplyCommand("/control/execute initialize.mac");
-  // ui->SessionStart(); // Uncomment this to enable UI
+  ui->SessionStart(); // Uncomment this to enable UI
 
 
   // BATCH RUN
