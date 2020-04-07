@@ -1,3 +1,4 @@
 /control/verbose 0
 /control/saveHistory
 /run/verbose 0
+/tracking/storeTrajectory 1

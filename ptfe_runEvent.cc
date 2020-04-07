@@ -7,8 +7,8 @@
 #include "Randomize.hh"
 // PROJECTS INCLUDE
 #include "ptfe_detectorConstruction.hh"
+#include "ptfe_physicsList.hh"
 #include "ptfe_actionInitialization.hh"
-#include "ptfe_surfaceParameterisation.hh"
 
 
 // MAIN FUNCTION
@@ -30,7 +30,8 @@ int main(int argc,char** argv)
   ptfe_detectorConstruction* myDetector = new ptfe_detectorConstruction();
   runManager->SetUserInitialization(myDetector);
   // Physics list class
-  G4VModularPhysicsList* myPhysicsList = new QBBC;
+  // G4VModularPhysicsList* myPhysicsList = new QBBC;
+  G4VModularPhysicsList* myPhysicsList = new ptfe_physicsList();
   myPhysicsList->SetVerboseLevel(1);
   runManager->SetUserInitialization(myPhysicsList);
   // Action class
@@ -49,8 +50,11 @@ int main(int argc,char** argv)
 
   // BATCH RUN
   // Run simulation
-  runManager->Initialize();
-  runManager->BeamOn(100);
+  if(!visual)
+  {
+    runManager->Initialize();
+    runManager->BeamOn(10); 
+  }
 
   delete ui;
   delete runManager;

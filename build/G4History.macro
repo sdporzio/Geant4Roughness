@@ -1,21 +1,11 @@
 /run/verbose 0
+/tracking/storeTrajectory 1
 /control/execute mac/surface_settings.mac
 /ptfe/surface/activateRoughness true
 /ptfe/surface/numberFeaturesSide 31
 /ptfe/surface/baseWidth 3 um
 /ptfe/surface/featuresHeight 10 um
 /ptfe/surface/featuresSpacing 0.1 um
-/control/execute mac/gps_settings_planeSource.mac
-/gps/particle proton
-/gps/energy 800 keV
-/gps/pos/type Plane
-/gps/pos/shape Square
-/gps/pos/rot1 0 1 0
-/gps/pos/rot2 1 0 0
-/gps/pos/centre 0 0 10 um
-/gps/pos/halfx 5 um
-/gps/pos/halfy 5 um
-/gps/ang/type cos
 /control/execute mac/analysis_settings.mac
 /analysis/setFileName test.root
 /run/initialize

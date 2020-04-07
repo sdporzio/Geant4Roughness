@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ptfe_runEvent.dir/ptfe_runEvent.cc.o"
   "CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o"
+  "CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o"
   "CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o"
   "CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.o"
+  "CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o"
   "CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o"
   "CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.o"
   "CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o"

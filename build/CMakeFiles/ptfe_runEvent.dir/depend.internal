@@ -4,7 +4,7 @@
 CMakeFiles/ptfe_runEvent.dir/ptfe_runEvent.cc.o
  ../include/ptfe_actionInitialization.hh
  ../include/ptfe_detectorConstruction.hh
- ../include/ptfe_surfaceParameterisation.hh
+ ../include/ptfe_physicsList.hh
  /Users/sdporzio/1_CurrentWork/ptfe_runEvent.cc
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Geometry/BasicVector3D.h
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Geometry/Normal3D.h
@@ -496,6 +496,21 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/pwdefs.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/templates.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/tls.hh
+CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o
+ ../include/ptfe_anaTrack.hh
+ /Users/sdporzio/1_CurrentWork/src/ptfe_anaTrack.cc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EnvironmentUtils.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Exception.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ExceptionSeverity.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4GlobalConfig.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4String.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4String.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Types.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VExceptionHandler.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ios.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/globals.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/templates.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/tls.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o
  ../include/ptfe_detectorConstruction.hh
  ../include/ptfe_surfaceParameterisation.hh
@@ -883,6 +898,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/trajectoryControl.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/trkdefs.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.o
+ ../include/ptfe_anaTrack.hh
  ../include/ptfe_eventAction.hh
  ../include/ptfe_runAction.hh
  /Users/sdporzio/1_CurrentWork/src/ptfe_eventAction.cc
@@ -1059,6 +1075,187 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.o
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/tools/wroot/seek
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/tools/wroot/tree
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/tools/wroot/wbuf
+CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o
+ ../include/ptfe_physicsList.hh
+ /Users/sdporzio/1_CurrentWork/src/ptfe_physicsList.cc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/DualRand.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/JamesRandom.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/MTwistEngine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/MixMaxRng.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBinomial.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBinomial.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBit.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBit.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBreitWigner.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBreitWigner.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandChiSquare.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandChiSquare.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandExpZiggurat.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandExponential.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandExponential.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandFlat.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandFlat.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGamma.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGamma.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGauss.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGauss.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGaussQ.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGaussQ.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGaussZiggurat.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGeneral.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGeneral.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandLandau.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandLandau.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandPoisson.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandPoisson.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandPoissonQ.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandPoissonQ.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandStudentT.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandStudentT.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/Random.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/Random.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandomEngine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandomEngine.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/Randomize.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RanecuEngine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/Ranlux64Engine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RanluxEngine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RanshiEngine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Units/PhysicalConstants.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Units/SystemOfUnits.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Utility/defs.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Utility/memory.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Utility/thread_local.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/AxisAngle.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/AxisAngle.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/LorentzVector.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/LorentzVector.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/Rotation.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/Rotation.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/RotationInterfaces.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/RotationInterfaces.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/RotationX.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/RotationX.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/RotationY.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/RotationY.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/RotationZ.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/RotationZ.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/ThreeVector.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/ThreeVector.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Allocator.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4AllocatorPool.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4AutoLock.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Cache.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4CacheDetails.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4DataVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4DataVector.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Decay.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4DecayPhysics.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4DecayProcessType.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4DynamicParticle.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4DynamicParticle.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ElectronOccupancy.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Element.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ElementTable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ElementVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EmParticleList.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EmStandardPhysics.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EnvironmentUtils.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Exception.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ExceptionSeverity.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Exp.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4FastVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ForceCondition.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4GPILSelection.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4GeomSplitter.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4GlobalConfig.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4IonisParamElm.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4IonisParamMat.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Isotope.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4IsotopeVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Log.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4LogicalVolume.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4LogicalVolume.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4LorentzVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4MCCIndexConversionTable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Material.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4MaterialCutsCouple.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4MaterialPropertiesIndex.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4MaterialPropertiesTable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4MaterialPropertiesTable.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4MaterialPropertyVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4MaterialTable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4OrderedTable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PDefManager.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ParticleChange.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ParticleChange.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ParticleChangeForDecay.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ParticleDefinition.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ParticleDefinition.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ParticleMomentum.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ParticleTable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ParticleTable.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ParticleTableIterator.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PhysicsListHelper.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PhysicsListOrderingParameter.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PhysicsModelCatalog.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PhysicsOrderedFreeVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PhysicsTable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PhysicsTable.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PhysicsVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PhysicsVector.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4PhysicsVectorType.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ProcessType.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ProductionCuts.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ProductionCutsTable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4RadioactiveDecayPhysics.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ReferenceCountedHandle.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Region.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Region.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4RotationMatrix.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4SandiaTable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Step.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Step.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4StepPoint.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4StepPoint.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4StepStatus.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4SteppingControl.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4String.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4String.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ThreadLocalSingleton.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Threading.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ThreeVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4TouchableHandle.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Track.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Track.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4TrackFastVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4TrackStatus.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4TrackVector.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Types.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VExceptionHandler.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VModularPhysicsList.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VParticleChange.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VParticleChange.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VPhysicalVolume.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VPhysicalVolume.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VPhysicsConstructor.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VProcess.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VRestDiscreteProcess.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VTouchable.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VTouchable.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VUPLSplitter.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VUserPhysicsList.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VUserTrackInformation.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ios.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/Randomize.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/geomdefs.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/geomwdefs.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/globals.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/pwdefs.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/rundefs.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/templates.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/tls.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/trkdefs.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o
  ../include/ptfe_primaryGeneratorAction.hh
  /Users/sdporzio/1_CurrentWork/src/ptfe_primaryGeneratorAction.cc
@@ -1068,9 +1265,54 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Geometry/Transform3D.h
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Geometry/Transform3D.icc
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Geometry/Vector3D.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/DualRand.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/JamesRandom.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/MTwistEngine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/MixMaxRng.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBinomial.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBinomial.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBit.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBit.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBreitWigner.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandBreitWigner.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandChiSquare.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandChiSquare.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandExpZiggurat.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandExponential.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandExponential.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandFlat.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandFlat.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGamma.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGamma.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGauss.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGauss.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGaussQ.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGaussQ.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGaussZiggurat.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGeneral.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandGeneral.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandLandau.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandLandau.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandPoisson.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandPoisson.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandPoissonQ.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandPoissonQ.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandStudentT.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandStudentT.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/Random.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/Random.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandomEngine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RandomEngine.icc
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/Randomize.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RanecuEngine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/Ranlux64Engine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RanluxEngine.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Random/RanshiEngine.h
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Units/PhysicalConstants.h
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Units/SystemOfUnits.h
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Utility/defs.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Utility/memory.h
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Utility/thread_local.h
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/AxisAngle.h
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/AxisAngle.icc
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/CLHEP/Vector/LorentzVector.h
@@ -1115,6 +1357,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4GeomSplitter.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4GlobalConfig.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4HCofThisEvent.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4IonTable.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Ions.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Log.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4LogicalVolume.hh
@@ -1202,6 +1445,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VoxelNavigation.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4VoxelNavigation.icc
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ios.hh
+ /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/Randomize.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/evtdefs.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/geomdefs.hh
  /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/geomwdefs.hh

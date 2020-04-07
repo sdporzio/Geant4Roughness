@@ -48,7 +48,13 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   analysisManager->CreateNtupleDColumn("edep_in");       
   analysisManager->CreateNtupleDColumn("edep_out");      
 
-
+  // Create the data branch
+  analysisManager->CreateNtuple("tracks", "Tracks");             //ntuple-ID 2
+  analysisManager->CreateNtupleIColumn("event_number");
+  analysisManager->CreateNtupleSColumn("particle_name");
+  analysisManager->CreateNtupleIColumn("particle_pdg");
+  analysisManager->CreateNtupleIColumn("tracks_id");
+  analysisManager->CreateNtupleIColumn("parent_id");
 
   analysisManager->FinishNtuple();
 }

@@ -1,8 +1,8 @@
 /control/execute mac/verbose_settings.mac
 /control/execute mac/surface_settings.mac
-/control/execute mac/gps_settings_planeSource.mac
+#/control/execute mac/gps_settings_planeSource.mac
 /control/execute mac/analysis_settings.mac
 
 /run/initialize
 /control/execute mac/vis_settings_basic.mac
-/run/beamOn 100
+/run/beamOn 10

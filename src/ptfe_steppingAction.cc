@@ -20,9 +20,15 @@ void ptfe_steppingAction::UserSteppingAction(const G4Step* step)
 {
 
   G4StepPoint* point = step->GetPreStepPoint();
-  // A bit silly way to get current track and current step number
-  // G4int track_id = step->GetTrack()->GetTrackID();
-  // G4int step_id = step->GetTrack()->GetCurrentStepNumber();
+  G4Track* track = step->GetTrack();
+
+  G4int track_id = track->GetTrackID();
+  G4String pname = track->GetParticleDefinition()->GetParticleName();
+
+  // fEventAction->fAnaTrack[track_id] = new ptfe_anaTrptfe_anaTrack();
+  // fEventAction->fAnaTrack[track_id].trackId = track_id;
+  // fEventAction->fAnaTrack[track_id].name = pname;
+
   // Volume name
   G4LogicalVolume* volume = point->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
   G4String volumeName = volume->GetName();

@@ -240,6 +240,33 @@ src/ptfe_actionInitialization.cc.s:
 	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.s
 .PHONY : src/ptfe_actionInitialization.cc.s
 
+src/ptfe_anaTrack.o: src/ptfe_anaTrack.cc.o
+
+.PHONY : src/ptfe_anaTrack.o
+
+# target to build an object file
+src/ptfe_anaTrack.cc.o:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o
+.PHONY : src/ptfe_anaTrack.cc.o
+
+src/ptfe_anaTrack.i: src/ptfe_anaTrack.cc.i
+
+.PHONY : src/ptfe_anaTrack.i
+
+# target to preprocess a source file
+src/ptfe_anaTrack.cc.i:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.i
+.PHONY : src/ptfe_anaTrack.cc.i
+
+src/ptfe_anaTrack.s: src/ptfe_anaTrack.cc.s
+
+.PHONY : src/ptfe_anaTrack.s
+
+# target to generate assembly for a file
+src/ptfe_anaTrack.cc.s:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.s
+.PHONY : src/ptfe_anaTrack.cc.s
+
 src/ptfe_detectorConstruction.o: src/ptfe_detectorConstruction.cc.o
 
 .PHONY : src/ptfe_detectorConstruction.o
@@ -293,6 +320,33 @@ src/ptfe_eventAction.s: src/ptfe_eventAction.cc.s
 src/ptfe_eventAction.cc.s:
 	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.s
 .PHONY : src/ptfe_eventAction.cc.s
+
+src/ptfe_physicsList.o: src/ptfe_physicsList.cc.o
+
+.PHONY : src/ptfe_physicsList.o
+
+# target to build an object file
+src/ptfe_physicsList.cc.o:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o
+.PHONY : src/ptfe_physicsList.cc.o
+
+src/ptfe_physicsList.i: src/ptfe_physicsList.cc.i
+
+.PHONY : src/ptfe_physicsList.i
+
+# target to preprocess a source file
+src/ptfe_physicsList.cc.i:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.i
+.PHONY : src/ptfe_physicsList.cc.i
+
+src/ptfe_physicsList.s: src/ptfe_physicsList.cc.s
+
+.PHONY : src/ptfe_physicsList.s
+
+# target to generate assembly for a file
+src/ptfe_physicsList.cc.s:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.s
+.PHONY : src/ptfe_physicsList.cc.s
 
 src/ptfe_primaryGeneratorAction.o: src/ptfe_primaryGeneratorAction.cc.o
 
@@ -421,12 +475,18 @@ help:
 	@echo "... src/ptfe_actionInitialization.o"
 	@echo "... src/ptfe_actionInitialization.i"
 	@echo "... src/ptfe_actionInitialization.s"
+	@echo "... src/ptfe_anaTrack.o"
+	@echo "... src/ptfe_anaTrack.i"
+	@echo "... src/ptfe_anaTrack.s"
 	@echo "... src/ptfe_detectorConstruction.o"
 	@echo "... src/ptfe_detectorConstruction.i"
 	@echo "... src/ptfe_detectorConstruction.s"
 	@echo "... src/ptfe_eventAction.o"
 	@echo "... src/ptfe_eventAction.i"
 	@echo "... src/ptfe_eventAction.s"
+	@echo "... src/ptfe_physicsList.o"
+	@echo "... src/ptfe_physicsList.i"
+	@echo "... src/ptfe_physicsList.s"
 	@echo "... src/ptfe_primaryGeneratorAction.o"
 	@echo "... src/ptfe_primaryGeneratorAction.i"
 	@echo "... src/ptfe_primaryGeneratorAction.s"
