@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../include/ptfe_anaTrack.hh
+globals.hh
+../include/globals.hh
+
 ../include/ptfe_detectorConstruction.hh
 G4VUserDetectorConstruction.hh
 ../include/G4VUserDetectorConstruction.hh
@@ -31,6 +35,8 @@ ptfe_eventAction.hh
 /Users/sdporzio/1_CurrentWork/src/ptfe_eventAction.hh
 ptfe_detectorConstruction.hh
 /Users/sdporzio/1_CurrentWork/src/ptfe_detectorConstruction.hh
+ptfe_anaTrack.hh
+/Users/sdporzio/1_CurrentWork/src/ptfe_anaTrack.hh
 G4Step.hh
 /Users/sdporzio/1_CurrentWork/src/G4Step.hh
 G4Event.hh

@@ -53,7 +53,7 @@ int main(int argc,char** argv)
   if(!visual)
   {
     runManager->Initialize();
-    runManager->BeamOn(10); 
+    runManager->BeamOn(100); 
   }
 
   delete ui;

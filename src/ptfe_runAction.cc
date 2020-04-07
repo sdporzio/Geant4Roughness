@@ -48,13 +48,42 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   analysisManager->CreateNtupleDColumn("edep_in");       
   analysisManager->CreateNtupleDColumn("edep_out");      
 
-  // Create the data branch
+  // Create the tracks branch
   analysisManager->CreateNtuple("tracks", "Tracks");             //ntuple-ID 2
   analysisManager->CreateNtupleIColumn("event_number");
   analysisManager->CreateNtupleSColumn("particle_name");
   analysisManager->CreateNtupleIColumn("particle_pdg");
   analysisManager->CreateNtupleIColumn("tracks_id");
   analysisManager->CreateNtupleIColumn("parent_id");
+  // Coordinates start
+  analysisManager->CreateNtupleDColumn("xStart");
+  analysisManager->CreateNtupleDColumn("yStart");
+  analysisManager->CreateNtupleDColumn("zStart");
+  // Momentum start
+  analysisManager->CreateNtupleDColumn("pxStart");
+  analysisManager->CreateNtupleDColumn("pyStart");
+  analysisManager->CreateNtupleDColumn("pzStart");
+  // Time-energy start
+  analysisManager->CreateNtupleDColumn("eStart");
+  analysisManager->CreateNtupleDColumn("kStart");
+  analysisManager->CreateNtupleDColumn("tStart");
+  // Coordinates end
+  analysisManager->CreateNtupleDColumn("xEnd");
+  analysisManager->CreateNtupleDColumn("yEnd");
+  analysisManager->CreateNtupleDColumn("zEnd");
+  // Momentum end
+  analysisManager->CreateNtupleDColumn("pxEnd");
+  analysisManager->CreateNtupleDColumn("pyEnd");
+  analysisManager->CreateNtupleDColumn("pzEnd");
+  // Time-energy end
+  analysisManager->CreateNtupleDColumn("eEnd");
+  analysisManager->CreateNtupleDColumn("kEnd");
+  analysisManager->CreateNtupleDColumn("tEnd");
+  // Volume information
+  analysisManager->CreateNtupleSColumn("volumeStart");
+  analysisManager->CreateNtupleSColumn("volumeEnd");
+  // Energy deposited
+  analysisManager->CreateNtupleDColumn("enDeposited");
 
   analysisManager->FinishNtuple();
 }

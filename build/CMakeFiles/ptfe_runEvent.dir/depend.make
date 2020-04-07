@@ -1801,6 +1801,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.o: /Users/sdporzio/Software/g
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/trajectoryControl.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/trkdefs.hh
 
+CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o: ../include/ptfe_anaTrack.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o: ../include/ptfe_detectorConstruction.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o: ../include/ptfe_eventAction.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o: ../include/ptfe_steppingAction.hh

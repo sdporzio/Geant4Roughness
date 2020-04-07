@@ -16,12 +16,12 @@ class ptfe_anaTrack
     G4int parentId;
     G4double xStart, yStart, zStart;
     G4double pxStart, pyStart, pzStart;
-    G4double pStart, eStart, tStart;
+    G4double eStart, kStart, tStart;
     G4double xEnd, yEnd, zEnd;
     G4double pxEnd, pyEnd, pzEnd;
-    G4double pEnd, eEnd, tEnd;
+    G4double eEnd, kEnd, tEnd;
     G4String volumeStart, volumeEnd;
-
+    G4double enDeposited;
 };
 
 #endif
