@@ -63,7 +63,7 @@
 #-> ADDITIONAL SETTINGS
 ###########################
 #-> Make the world box invisible
-/vis/geometry/set/visibility World 0 false
+/vis/geometry/set/visibility World 1 true
 #-> Re-establish auto-refreshing and verbosity
 /vis/viewer/set/autoRefresh true
 #/vis/verbose warnings

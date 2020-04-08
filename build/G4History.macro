@@ -1,12 +1,46 @@
 /run/verbose 0
-/tracking/storeTrajectory 1
 /control/execute mac/surface_settings.mac
 /ptfe/surface/activateRoughness true
-/ptfe/surface/numberFeaturesSide 31
+/ptfe/surface/numberFeaturesSide 71
 /ptfe/surface/baseWidth 3 um
 /ptfe/surface/featuresHeight 10 um
 /ptfe/surface/featuresSpacing 0.1 um
 /control/execute mac/analysis_settings.mac
+/tracking/storeTrajectory 1
 /analysis/setFileName test.root
 /run/initialize
 /control/execute mac/vis_settings_basic.mac
+/vis/open OGL 600x600-0+0
+/vis/sceneHandler/create OGL
+/vis/viewer/create ! ! 600x600-0+0
+/vis/viewer/refresh
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+/vis/drawVolume
+/vis/scene/create
+/vis/scene/add/volume world -1 -1 none m 0 0 0 0 0 0
+/vis/sceneHandler/attach
+/vis/set/lineWidth 100
+/vis/scene/add/trajectories smooth
+/tracking/storeTrajectory 2
+/vis/scene/notifyHandlers
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setLineWidth 15
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 5
+/vis/scene/notifyHandlers scene-0
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/hits
+/vis/scene/notifyHandlers
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0.5 0.1
+/vis/viewer/set/autoRefresh true
+/vis/viewer/refresh
+/run/beamOn 10
+/vis/scene/notifyHandlers scene-0
+/vis/viewer/set/style s
+/vis/viewer/refresh
+/vis/viewer/set/hiddenEdge 1
+/vis/viewer/refresh

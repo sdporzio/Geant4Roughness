@@ -28,7 +28,7 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   analysisManager->FinishNtuple();
 
   // Create the data branch
-  analysisManager->CreateNtuple("data", "Data");             //ntuple-ID 1
+  analysisManager->CreateNtuple("event_data", "EventData");             //ntuple-ID 1
   analysisManager->CreateNtupleIColumn("event_number");
   analysisManager->CreateNtupleIColumn("seed_event_index");
   analysisManager->CreateNtupleIColumn("seed_event1");
@@ -49,7 +49,7 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   analysisManager->CreateNtupleDColumn("edep_out");      
 
   // Create the tracks branch
-  analysisManager->CreateNtuple("tracks", "Tracks");             //ntuple-ID 2
+  analysisManager->CreateNtuple("tracks_data", "TracksData");             //ntuple-ID 2
   analysisManager->CreateNtupleIColumn("event_number");
   analysisManager->CreateNtupleSColumn("particle_name");
   analysisManager->CreateNtupleIColumn("particle_pdg");
