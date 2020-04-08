@@ -51,8 +51,9 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
 
   // NIST MATERIALS
   G4NistManager* nist = G4NistManager::Instance();
-  // G4Material* air_mat = nist->FindOrBuildMaterial("G4_AIR");
-  // G4Material* ptfe_mat = nist->FindOrBuildMaterial("G4_TEFLON");
+  G4Material* air_mat = nist->FindOrBuildMaterial("G4_AIR");
+  G4Material* nist_water = nist->FindOrBuildMaterial("G4_WATER");
+  G4Material* nist_teflon = nist->FindOrBuildMaterial("G4_TEFLON");
 
   // BUILD LIQUID XENON
   G4double xeTemperature = 173 * kelvin;
@@ -115,7 +116,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
        world_sizeXY*0.5, world_sizeXY*0.5, world_sizeZ*0.5);     //size   
   G4LogicalVolume* logicWorld =                         
     new G4LogicalVolume(solidWorld,        //solid
-                        liquidXe,           //material
+                        nist_water,           //material
                         "World");          //name                         
   G4VPhysicalVolume* physWorld = 
     new G4PVPlacement(0,                     //no rotation
@@ -136,7 +137,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
        wall_sizeXY*0.5, wall_sizeXY*0.5, wall_sizeZ*0.5);       //size 
   G4LogicalVolume* logicWall =                         
     new G4LogicalVolume(solidWall,        //solid
-                        teflon,         //material
+                        nist_teflon,         //material
                         "Wall");          //name                              
   G4VPhysicalVolume* physWall = 
     new G4PVPlacement(0,                     //no rotation

@@ -84,6 +84,7 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   analysisManager->CreateNtupleSColumn("volumeEnd");
   // Energy deposited
   analysisManager->CreateNtupleDColumn("enDeposited");
+  analysisManager->CreateNtupleDColumn("distTravelled");
 
   analysisManager->FinishNtuple();
 }

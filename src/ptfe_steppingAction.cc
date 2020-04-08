@@ -9,6 +9,8 @@
 #include "G4RunManager.hh"
 #include "G4LogicalVolume.hh"
 #include "G4StepPoint.hh"
+#include "globals.hh"
+
 
 ptfe_steppingAction::ptfe_steppingAction(ptfe_eventAction* eventAction)
 : G4UserSteppingAction(),
@@ -40,56 +42,58 @@ void ptfe_steppingAction::UserSteppingAction(const G4Step* step)
     fEventAction->fAnaTrack[track_id].parentId = track->GetParentID();
     // GET STARTING QUANTITIES
     // Get first point coordinates
-    fEventAction->fAnaTrack[track_id].xStart = prepoint->GetPosition()[0];
-    fEventAction->fAnaTrack[track_id].yStart = prepoint->GetPosition()[1];
-    fEventAction->fAnaTrack[track_id].zStart = prepoint->GetPosition()[2];
-    fEventAction->fAnaTrack[track_id].tStart = prepoint->GetLocalTime();
+    fEventAction->fAnaTrack[track_id].xStart = prepoint->GetPosition()[0]/CLHEP::um;
+    fEventAction->fAnaTrack[track_id].yStart = prepoint->GetPosition()[1]/CLHEP::um;
+    fEventAction->fAnaTrack[track_id].zStart = prepoint->GetPosition()[2]/CLHEP::um;
+    fEventAction->fAnaTrack[track_id].tStart = prepoint->GetLocalTime()/CLHEP::ns;
     // Get first point momenta
     fEventAction->fAnaTrack[track_id].pxStart = prepoint->GetMomentum()[0];
     fEventAction->fAnaTrack[track_id].pyStart = prepoint->GetMomentum()[1];
     fEventAction->fAnaTrack[track_id].pzStart = prepoint->GetMomentum()[2];
     // Get first point energy
-    fEventAction->fAnaTrack[track_id].eStart = prepoint->GetTotalEnergy();
-    fEventAction->fAnaTrack[track_id].kStart = prepoint->GetKineticEnergy();
+    fEventAction->fAnaTrack[track_id].eStart = prepoint->GetTotalEnergy()/CLHEP::MeV;
+    fEventAction->fAnaTrack[track_id].kStart = prepoint->GetKineticEnergy()/CLHEP::MeV;
     // Get first point volume
     fEventAction->fAnaTrack[track_id].volumeStart = prepoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
     // ALL THE SAME BUT FOR END POINT
-    fEventAction->fAnaTrack[track_id].xEnd = postpoint->GetPosition()[0];
-    fEventAction->fAnaTrack[track_id].yEnd = postpoint->GetPosition()[1];
-    fEventAction->fAnaTrack[track_id].zEnd = postpoint->GetPosition()[2];
-    fEventAction->fAnaTrack[track_id].tEnd = postpoint->GetLocalTime();
+    fEventAction->fAnaTrack[track_id].xEnd = postpoint->GetPosition()[0]/CLHEP::um;
+    fEventAction->fAnaTrack[track_id].yEnd = postpoint->GetPosition()[1]/CLHEP::um;
+    fEventAction->fAnaTrack[track_id].zEnd = postpoint->GetPosition()[2]/CLHEP::um;
+    fEventAction->fAnaTrack[track_id].tEnd = postpoint->GetLocalTime()/CLHEP::ns;
     // Get last point momenta
     fEventAction->fAnaTrack[track_id].pxEnd = postpoint->GetMomentum()[0];
     fEventAction->fAnaTrack[track_id].pyEnd = postpoint->GetMomentum()[1];
     fEventAction->fAnaTrack[track_id].pzEnd = postpoint->GetMomentum()[2];
     // Get last point energy
-    fEventAction->fAnaTrack[track_id].eEnd = postpoint->GetTotalEnergy();
-    fEventAction->fAnaTrack[track_id].kEnd = postpoint->GetKineticEnergy();
+    fEventAction->fAnaTrack[track_id].eEnd = postpoint->GetTotalEnergy()/CLHEP::MeV;
+    fEventAction->fAnaTrack[track_id].kEnd = postpoint->GetKineticEnergy()/CLHEP::MeV;
     // Get last point volume (CAREFUL, for some reason, sometimes unassigned)
     if(!(postpoint->GetPhysicalVolume())) fEventAction->fAnaTrack[track_id].volumeStart = "Unassigned";
     else fEventAction->fAnaTrack[track_id].volumeEnd = postpoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
-    // Keep adding energy deposited
-    fEventAction->fAnaTrack[track_id].enDeposited = step->GetTotalEnergyDeposit();
+    // Keep adding energy deposited and travelled length
+    fEventAction->fAnaTrack[track_id].enDeposited = step->GetTotalEnergyDeposit()/CLHEP::MeV;
+    fEventAction->fAnaTrack[track_id].distTravelled = step->GetStepLength()/CLHEP::um;
   }
   // if not, just update the end quantities
   else
   {
-    fEventAction->fAnaTrack[track_id].xEnd = postpoint->GetPosition()[0];
-    fEventAction->fAnaTrack[track_id].yEnd = postpoint->GetPosition()[1];
-    fEventAction->fAnaTrack[track_id].zEnd = postpoint->GetPosition()[2];
-    fEventAction->fAnaTrack[track_id].tEnd = postpoint->GetLocalTime();
+    fEventAction->fAnaTrack[track_id].xEnd = postpoint->GetPosition()[0]/CLHEP::um;
+    fEventAction->fAnaTrack[track_id].yEnd = postpoint->GetPosition()[1]/CLHEP::um;
+    fEventAction->fAnaTrack[track_id].zEnd = postpoint->GetPosition()[2]/CLHEP::um;
+    fEventAction->fAnaTrack[track_id].tEnd = postpoint->GetLocalTime()/CLHEP::ns;
     // Get last point momenta
     fEventAction->fAnaTrack[track_id].pxEnd = postpoint->GetMomentum()[0];
     fEventAction->fAnaTrack[track_id].pyEnd = postpoint->GetMomentum()[1];
     fEventAction->fAnaTrack[track_id].pzEnd = postpoint->GetMomentum()[2];
     // Get last point energy
-    fEventAction->fAnaTrack[track_id].eEnd = postpoint->GetTotalEnergy();
-    fEventAction->fAnaTrack[track_id].kEnd = postpoint->GetKineticEnergy();
+    fEventAction->fAnaTrack[track_id].eEnd = postpoint->GetTotalEnergy()/CLHEP::MeV;
+    fEventAction->fAnaTrack[track_id].kEnd = postpoint->GetKineticEnergy()/CLHEP::MeV;
     // Get last point volume (CAREFUL, for some reason, sometimes unassigned)
     if(!(postpoint->GetPhysicalVolume())) fEventAction->fAnaTrack[track_id].volumeStart = "Unassigned";
     else fEventAction->fAnaTrack[track_id].volumeEnd = postpoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
-    // Keep adding energy deposited
-    fEventAction->fAnaTrack[track_id].enDeposited += step->GetTotalEnergyDeposit();
+    // Keep adding energy deposited and travelled length
+    fEventAction->fAnaTrack[track_id].enDeposited += step->GetTotalEnergyDeposit()/CLHEP::MeV;
+    fEventAction->fAnaTrack[track_id].distTravelled += step->GetStepLength()/CLHEP::um;
   }
 
   // Get energy deposit per volume

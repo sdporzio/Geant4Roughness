@@ -36,6 +36,21 @@ void ptfe_eventAction::BeginOfEventAction(const G4Event* event)
 void ptfe_eventAction::EndOfEventAction(const G4Event* event)
 {
   printf("SUMMARY OF EVENT %i\n", (int) event->GetEventID());
+  G4TrajectoryContainer* trajectoryContainer = event->GetTrajectoryContainer();
+  G4int n_trajectories = 0;
+  if (trajectoryContainer) n_trajectories = trajectoryContainer->entries();
+  printf("Number tracks: %i\n", n_trajectories);
+  for(int i=0; i<n_trajectories; i++)
+  {
+    G4VTrajectory* currentTrack = (*trajectoryContainer)[i];
+    G4int tid = currentTrack->GetTrackID();
+    G4int gid = currentTrack->GetParentID();
+    G4String pname = currentTrack->GetParticleName();
+    G4int pdg = currentTrack->GetPDGEncoding();
+
+    printf("%s (%i) [TrackID: %i; ParentID: %i]\n", pname.c_str(),pdg,tid,gid);
+  }
+
 
   // Save metadata to the ROOT file
   auto analysisManager = G4AnalysisManager::Instance(); G4int i = 0;
@@ -61,8 +76,6 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
   analysisManager->AddNtupleRow(1);
 
   // TRACK INFORMATION TIME
-  G4int n_trajectories = fAnaTrack.size();
-  printf("Number tracks: %i\n", n_trajectories);
   for ( const auto &thisId : fAnaTrack )
   {
     G4int j = 0;
@@ -101,13 +114,11 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
     analysisManager->FillNtupleSColumn(2,j,thisTrack.volumeStart); j+=1;
     analysisManager->FillNtupleSColumn(2,j,thisTrack.volumeEnd); j+=1;
     // Energy deposited
-    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited); j+=1;    
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.distTravelled); j+=1;
 
     // Save this row
     analysisManager->AddNtupleRow(2);
-
-    // Print some information out
-    printf("%s (%i) [TrackID: %i; ParentID: %i]\n", thisTrack.name.c_str(),thisTrack.pdg,thisTrack.trackId,thisTrack.parentId);
   }
 
   // Print some generic information out

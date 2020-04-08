@@ -16,7 +16,8 @@ int main(int argc,char** argv)
 {
   CLHEP::HepRandom::setTheEngine(new CLHEP::RanecuEngine());
   CLHEP::HepRandom::setTheSeed(124);
-  G4bool visual = true;
+  G4bool visual = false;
+  G4int nEvents = 10000;
 
   // INITIALIZE THE UI CLASS
   G4UIExecutive* ui = 0;
@@ -53,7 +54,7 @@ int main(int argc,char** argv)
   if(!visual)
   {
     runManager->Initialize();
-    runManager->BeamOn(100); 
+    runManager->BeamOn(nEvents); 
   }
 
   delete ui;

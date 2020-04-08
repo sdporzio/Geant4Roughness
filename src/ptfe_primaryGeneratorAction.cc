@@ -43,7 +43,8 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   x0 += dx0*(G4UniformRand()-dx0/2.);
   y0 += dy0*(G4UniformRand()-dy0/2.);
   z0 += dz0*(G4UniformRand()-dz0/2.);
-  fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
+  // fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
+  fParticleGun->SetParticlePosition(G4ThreeVector(0,0,0));
 
   fParticleGun->GeneratePrimaryVertex(event);
 };
