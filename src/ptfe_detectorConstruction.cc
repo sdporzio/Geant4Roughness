@@ -51,7 +51,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
 
   // NIST MATERIALS
   G4NistManager* nist = G4NistManager::Instance();
-  G4Material* air_mat = nist->FindOrBuildMaterial("G4_AIR");
+  G4Material* nist_air = nist->FindOrBuildMaterial("G4_AIR");
   G4Material* nist_water = nist->FindOrBuildMaterial("G4_WATER");
   G4Material* nist_teflon = nist->FindOrBuildMaterial("G4_TEFLON");
 
@@ -101,6 +101,22 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
     teflon->AddElement(natC, 1);
     teflon->AddElement(natF, 2);
 
+  // BUILD METALS
+  G4Isotope* Cu63 = new G4Isotope("Cu63", 29, 63, 62.92959898 * g / mole);
+  G4Isotope* Cu65 = new G4Isotope("Cu65", 29, 65, 64.9277929 * g / mole);
+
+  G4Element* natCu = new G4Element("Natural Cu", "natCu", 2);
+  natCu->AddIsotope(Cu63, 69.17 * perCent);
+  natCu->AddIsotope(Cu65, 30.83 * perCent);
+
+  G4Material* copper = new G4Material("copper", 8.920 * g / cm3, 1);
+  copper->AddElement(natCu, 1);
+
+  // MATERIALS
+  G4Material* in_material = copper;
+  G4Material* out_material = liquidXe;
+
+
 
   // WALL DIMENSIONS
   G4double wall_sizeXY = fNumberFeaturesSide*(fBaseWidth+fFeaturesSpacing);
@@ -116,7 +132,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
        world_sizeXY*0.5, world_sizeXY*0.5, world_sizeZ*0.5);     //size   
   G4LogicalVolume* logicWorld =                         
     new G4LogicalVolume(solidWorld,        //solid
-                        nist_water,           //material
+                        out_material,           //material
                         "World");          //name                         
   G4VPhysicalVolume* physWorld = 
     new G4PVPlacement(0,                     //no rotation
@@ -137,7 +153,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
        wall_sizeXY*0.5, wall_sizeXY*0.5, wall_sizeZ*0.5);       //size 
   G4LogicalVolume* logicWall =                         
     new G4LogicalVolume(solidWall,        //solid
-                        nist_teflon,         //material
+                        in_material,         //material
                         "Wall");          //name                              
   G4VPhysicalVolume* physWall = 
     new G4PVPlacement(0,                     //no rotation
@@ -165,7 +181,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
          wall_sizeXY*0.5, wall_sizeXY*0.5, fFeaturesHeight*0.5);     //size 
     G4LogicalVolume* logicCushion =                         
       new G4LogicalVolume(solidCushion,    //solid
-                          liquidXe,        //material
+                          out_material,        //material
                           "Cushion");      //name     
     G4VPhysicalVolume* physCushion = 
       new G4PVPlacement(0,                     //no rotation
@@ -193,7 +209,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
                 0.5*shape2_dya, 0.5*shape2_dyb, 0.5*shape2_dz);   //size
     G4LogicalVolume* logicPyramid =                         
       new G4LogicalVolume(solidPyramid,        //solid
-                          teflon,            //material
+                          in_material,            //material
                           "RoughSurface");          //name   
     G4VPVParameterisation* pyramidParam =
       new ptfe_surfaceParameterisation(fNumberFeaturesSide, //number pyramids

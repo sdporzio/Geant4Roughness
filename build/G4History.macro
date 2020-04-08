@@ -1,12 +1,48 @@
 /run/verbose 0
-/control/execute mac/surface_settings.mac
-/ptfe/surface/activateRoughness false
-/ptfe/surface/numberFeaturesSide 71
-/ptfe/surface/baseWidth 3 um
-/ptfe/surface/featuresHeight 10 um
-/ptfe/surface/featuresSpacing 0.1 um
+/control/execute mac/surface_settings_scale2.mac
+/ptfe/surface/activateRoughness true
+/ptfe/surface/numberFeaturesSide 10
+/ptfe/surface/baseWidth 80 um
+/ptfe/surface/featuresHeight 3 um
+/ptfe/surface/featuresSpacing 1 nm
 /control/execute mac/analysis_settings.mac
 /tracking/storeTrajectory 1
 /analysis/setFileName test.root
 /run/initialize
 /control/execute mac/vis_settings_basic.mac
+/vis/open OGL 600x600-0+0
+/vis/sceneHandler/create OGL
+/vis/viewer/create ! ! 600x600-0+0
+/vis/viewer/refresh
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+/vis/drawVolume
+/vis/scene/create
+/vis/scene/add/volume world -1 -1 none m 0 0 0 0 0 0
+/vis/sceneHandler/attach
+/vis/set/lineWidth 100
+/vis/scene/add/trajectories smooth
+/tracking/storeTrajectory 2
+/vis/scene/notifyHandlers
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/default/setLineWidth 15
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsSize 5
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set alpha blue
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set Pb206 red
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set e- yellow
+/vis/scene/notifyHandlers scene-0
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/hits
+/vis/scene/notifyHandlers
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0.5 0.1
+/vis/viewer/set/autoRefresh true
+/vis/viewer/refresh
+/run/beamOn 20
+/vis/scene/notifyHandlers scene-0

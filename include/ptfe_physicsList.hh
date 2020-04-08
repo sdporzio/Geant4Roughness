@@ -10,6 +10,7 @@ public:
   virtual ~ptfe_physicsList();
 
   virtual void SetCuts();
+  virtual void AddIonGasModels();
 };
 
 

@@ -1158,8 +1158,12 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ElementTable.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ElementVector.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EmLivermorePhysics.hh
+CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EmLowEPPhysics.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EmParticleList.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EmStandardPhysics.hh
+CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EmStandardPhysicsGS.hh
+CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EmStandardPhysicsSS.hh
+CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EmStandardPhysicsWVI.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4EnvironmentUtils.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Exception.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4ExceptionSeverity.hh
@@ -1169,6 +1173,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4GPILSelection.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4GeomSplitter.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4GlobalConfig.hh
+CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4IonPhysics.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4IonisParamElm.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4IonisParamMat.hh
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: /Users/sdporzio/Software/geant4.10.06.p01/install/include/Geant4/G4Isotope.hh
