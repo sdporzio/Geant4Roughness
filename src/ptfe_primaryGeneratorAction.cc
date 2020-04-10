@@ -1,6 +1,8 @@
 #include "ptfe_primaryGeneratorAction.hh"
+#include "ptfe_detectorConstruction.hh"
 
 #include "G4ParticleGun.hh"
+#include "G4RunManager.hh"
 #include "G4GeneralParticleSource.hh"
 #include "G4Proton.hh"
 #include "G4IonTable.hh"
@@ -29,6 +31,12 @@ ptfe_primaryGeneratorAction::~ptfe_primaryGeneratorAction(){}
 // Generate primary particles
 void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
 {
+
+  // Get the detector (for metadata purposes)
+  const ptfe_detectorConstruction* myDetector
+      = static_cast<const ptfe_detectorConstruction*>
+        (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
+
   //Generate one instance of specified particle
   G4int A = 210, Z = 84; // 210Po
   G4ParticleDefinition* ion
@@ -37,14 +45,24 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   fParticleGun->SetParticleCharge(0.);
   fParticleGun->SetParticleEnergy(0*eV);    
 
+  // fParticleGun->SetParticlePosition(G4ThreeVector(0,0,0));
 
-  G4double x0  = 0*um, y0  = 0*um, z0  = 5*um;
-  G4double dx0 = 1*um, dy0 = 1*um, dz0 = 0*um; 
-  x0 += dx0*(G4UniformRand()-dx0/2.);
-  y0 += dy0*(G4UniformRand()-dy0/2.);
-  z0 += dz0*(G4UniformRand()-dz0/2.);
-  // fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
-  fParticleGun->SetParticlePosition(G4ThreeVector(0,0,0));
+  // Uniform generation at 100 nm depth + cushion
+  G4double x1  = -(myDetector->WallWidth()/10.);
+  G4double y1  = -(myDetector->WallWidth()/10.);
+  G4double z1  = -100*nm;
+
+  G4double x2  = (myDetector->WallWidth()/10.);
+  G4double y2  = (myDetector->WallWidth()/10.);
+  G4double z2  = (myDetector->FeaturesHeight());
+  // G4double z2  = 0.;
+
+  G4double x0 = G4UniformRand()*abs(x2-x1) + x1;
+  G4double y0 = G4UniformRand()*abs(y2-y1) + y1;
+  G4double z0 = G4UniformRand()*abs(z2-z1) + z1;
+  fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
+
+
 
   fParticleGun->GeneratePrimaryVertex(event);
 };

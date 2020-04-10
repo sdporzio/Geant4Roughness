@@ -24,14 +24,16 @@
 ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruction(),
   fMessenger(nullptr),
   fActivateRoughness(true),
-  fNumberFeaturesSide(10),
-  fFeaturesHeight(10),
-  fBaseWidth(30),
-  fFeaturesSpacing(0.5)
+  fWallWidth(100.*CLHEP::um),
+  fWallDepth(100.*CLHEP::um),
+  fFeaturesHeight(0.),
+  fBaseWidth(0.),
+  fFeaturesSpacing(0.)
 {
   fMessenger = new G4GenericMessenger(this,"/ptfe/surface/","...");
   fMessenger->DeclareProperty("activateRoughness",fActivateRoughness,"...");
-  fMessenger->DeclareProperty("numberFeaturesSide",fNumberFeaturesSide,"...");
+  fMessenger->DeclarePropertyWithUnit("wallWidth","um",fWallWidth,"...");
+  fMessenger->DeclarePropertyWithUnit("wallDepth","um",fWallDepth,"...");
   fMessenger->DeclarePropertyWithUnit("baseWidth","um",fBaseWidth,"...");
   fMessenger->DeclarePropertyWithUnit("featuresHeight","um",fFeaturesHeight,"...");
   fMessenger->DeclarePropertyWithUnit("featuresSpacing","um",fFeaturesSpacing,"...");
@@ -50,10 +52,10 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
   G4bool checkOverlaps = false;
 
   // NIST MATERIALS
-  G4NistManager* nist = G4NistManager::Instance();
-  G4Material* nist_air = nist->FindOrBuildMaterial("G4_AIR");
-  G4Material* nist_water = nist->FindOrBuildMaterial("G4_WATER");
-  G4Material* nist_teflon = nist->FindOrBuildMaterial("G4_TEFLON");
+  // G4NistManager* nist = G4NistManager::Instance();
+  // G4Material* nist_air = nist->FindOrBuildMaterial("G4_AIR");
+  // G4Material* nist_water = nist->FindOrBuildMaterial("G4_WATER");
+  // G4Material* nist_teflon = nist->FindOrBuildMaterial("G4_TEFLON");
 
   // BUILD LIQUID XENON
   G4double xeTemperature = 173 * kelvin;
@@ -113,19 +115,36 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
   copper->AddElement(natCu, 1);
 
   // MATERIALS
-  G4Material* in_material = copper;
+  G4Material* in_material = teflon;
   G4Material* out_material = liquidXe;
 
 
 
   // WALL DIMENSIONS
-  G4double wall_sizeXY = fNumberFeaturesSide*(fBaseWidth+fFeaturesSpacing);
-  G4double wall_sizeZ = wall_sizeXY/2.;
+  // Obtain number of features per side (round by excess)
+  printf("Input wall dimensions: %.1f x %.1f x %.1f um\n", fWallWidth/CLHEP::um, fWallWidth/CLHEP::um,fWallDepth/CLHEP::um);
+  printf("Input feature dimensions: %.1f (h) x %.1f (b) um with %.1f nm spacing\n", fFeaturesHeight/CLHEP::um, fBaseWidth/CLHEP::um, fFeaturesSpacing/CLHEP::nm);
+
+  G4double wall_sizeXY, wall_sizeZ;
+  if(fActivateRoughness)
+  {
+    fNumberFeaturesSide = int(fWallWidth/(fBaseWidth+fFeaturesSpacing))+1;
+    printf("Number features produced: %i\n", fNumberFeaturesSide);
+    wall_sizeXY = fNumberFeaturesSide*(fBaseWidth+fFeaturesSpacing);
+    wall_sizeZ = fWallDepth;
+    printf("Actuall wall dimensions: %.1f x %.1f x %.1f um\n", wall_sizeXY/CLHEP::um, wall_sizeXY/CLHEP::um,wall_sizeZ/CLHEP::um);
+  }
+  else
+  {
+    wall_sizeXY = fWallWidth;
+    wall_sizeZ = fWallDepth;
+  }
 
   // WORLD
   // World is two times bigger than surface
-  G4double world_sizeXY = wall_sizeXY*20;
-  G4double world_sizeZ = wall_sizeZ*20;
+  G4double world_sizeXY = wall_sizeXY*5;
+  G4double world_sizeZ = wall_sizeZ*5;
+  printf("World dimensions: %.1f x %.1f x %.1f um\n", world_sizeXY/CLHEP::um, world_sizeXY/CLHEP::um,world_sizeZ/CLHEP::um);
   // Build the world
   G4Box* solidWorld =    
     new G4Box("World",                                           //name

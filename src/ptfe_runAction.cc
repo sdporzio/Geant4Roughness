@@ -21,6 +21,8 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   analysisManager->CreateNtuple("metadata", "Metadata");              //ntuple-ID 0
   analysisManager->CreateNtupleIColumn("seed_run");
   analysisManager->CreateNtupleIColumn("surface_activateRoughness");
+  analysisManager->CreateNtupleDColumn("surface_wallWidth");
+  analysisManager->CreateNtupleDColumn("surface_wallDepth");
   analysisManager->CreateNtupleIColumn("surface_numberFeaturesSide");
   analysisManager->CreateNtupleDColumn("surface_baseWidth");        
   analysisManager->CreateNtupleDColumn("surface_featuresHeight");   
@@ -83,8 +85,14 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   analysisManager->CreateNtupleSColumn("volumeStart");
   analysisManager->CreateNtupleSColumn("volumeEnd");
   // Energy deposited
-  analysisManager->CreateNtupleDColumn("enDeposited");
   analysisManager->CreateNtupleDColumn("distTravelled");
+  analysisManager->CreateNtupleDColumn("enDeposited_tot");
+  analysisManager->CreateNtupleDColumn("enDeposited_wall");
+  analysisManager->CreateNtupleDColumn("enDeposited_surface");
+  analysisManager->CreateNtupleDColumn("enDeposited_cushion");
+  analysisManager->CreateNtupleDColumn("enDeposited_world");
+  analysisManager->CreateNtupleDColumn("enDeposited_in");
+  analysisManager->CreateNtupleDColumn("enDeposited_out");
 
   analysisManager->FinishNtuple();
 }
@@ -110,6 +118,8 @@ void ptfe_runAction::EndOfRunAction(const G4Run* run)
   auto analysisManager = G4AnalysisManager::Instance(); G4int i = 0;
   analysisManager->FillNtupleIColumn(0,i,CLHEP::HepRandom::getTheSeed()); i+=1;
   analysisManager->FillNtupleIColumn(0,i,myDetector->ActivateRoughness()); i+=1;
+  analysisManager->FillNtupleDColumn(0,i,myDetector->WallWidth()); i+=1;
+  analysisManager->FillNtupleDColumn(0,i,myDetector->WallDepth()); i+=1;
   analysisManager->FillNtupleIColumn(0,i,myDetector->NumberFeaturesSide()); i+=1;
   analysisManager->FillNtupleDColumn(0,i,myDetector->BaseWidth()); i+=1;
   analysisManager->FillNtupleDColumn(0,i,myDetector->FeaturesHeight()); i+=1;

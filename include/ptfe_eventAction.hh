@@ -23,6 +23,7 @@ class ptfe_eventAction : public G4UserEventAction
       fEnDep_vector[volumeName].push_back(edep);
       fEnDep[volumeName] += edep;
     }
+
     
     // Too lazy to put it in private and write methods
     std::map<G4int,ptfe_anaTrack> fAnaTrack;

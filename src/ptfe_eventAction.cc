@@ -3,6 +3,7 @@
 #include "ptfe_anaTrack.hh"
 #include "Randomize.hh"
 #include "g4analysis.hh"
+#include "G4RunManager.hh"
 #include "G4Event.hh"
 #include "G4VTrajectory.hh"
 
@@ -35,11 +36,15 @@ void ptfe_eventAction::BeginOfEventAction(const G4Event* event)
 
 void ptfe_eventAction::EndOfEventAction(const G4Event* event)
 {
-  printf("SUMMARY OF EVENT %i\n", (int) event->GetEventID());
+  G4bool isEventKilled = G4RunManager::GetRunManager()->GetCurrentEvent()->IsAborted();
+  if(isEventKilled) return;
+
+
+  // printf("SUMMARY OF EVENT %i\n", (int) event->GetEventID());
   G4TrajectoryContainer* trajectoryContainer = event->GetTrajectoryContainer();
   G4int n_trajectories = 0;
   if (trajectoryContainer) n_trajectories = trajectoryContainer->entries();
-  printf("Number tracks: %i\n", n_trajectories);
+  // printf("Number tracks: %i\n", n_trajectories);
   for(int i=0; i<n_trajectories; i++)
   {
     G4VTrajectory* currentTrack = (*trajectoryContainer)[i];
@@ -48,7 +53,7 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
     G4String pname = currentTrack->GetParticleName();
     G4int pdg = currentTrack->GetPDGEncoding();
 
-    printf("%s (%i) [TrackID: %i; ParentID: %i]\n", pname.c_str(),pdg,tid,gid);
+    // printf("%s (%i) [TrackID: %i; ParentID: %i]\n", pname.c_str(),pdg,tid,gid);
   }
 
 
@@ -114,16 +119,22 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
     analysisManager->FillNtupleSColumn(2,j,thisTrack.volumeStart); j+=1;
     analysisManager->FillNtupleSColumn(2,j,thisTrack.volumeEnd); j+=1;
     // Energy deposited
-    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited); j+=1;
     analysisManager->FillNtupleDColumn(2,j,thisTrack.distTravelled); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_tot); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_wall); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_surface); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_cushion); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_world); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_wall+thisTrack.enDeposited_surface); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_cushion+thisTrack.enDeposited_world); j+=1;
 
     // Save this row
     analysisManager->AddNtupleRow(2);
   }
 
   // Print some generic information out
-  printf("RoughSurface total energy deposit: %.2f MeV\n",fEnDep["RoughSurface"]+fEnDep["Wall"]);
-  printf("External total energy deposit: %.2f MeV\n",fEnDep["Cushion"]+fEnDep["World"]);
+  // printf("RoughSurface total energy deposit: %.2f MeV\n",fEnDep["RoughSurface"]+fEnDep["Wall"]);
+  // printf("External total energy deposit: %.2f MeV\n",fEnDep["Cushion"]+fEnDep["World"]);
 
-  printf("\n");
+  // printf("\n");
 }

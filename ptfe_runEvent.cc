@@ -16,8 +16,8 @@ int main(int argc,char** argv)
 {
   CLHEP::HepRandom::setTheEngine(new CLHEP::RanecuEngine());
   CLHEP::HepRandom::setTheSeed(121);
-  G4bool visual = true;
-  G4int nEvents = 10000;
+  G4bool visual = false;
+  G4int nEvents = 1000000;
 
   // INITIALIZE THE UI CLASS
   G4UIExecutive* ui = 0;

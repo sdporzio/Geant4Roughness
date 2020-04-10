@@ -87,9 +87,48 @@ CMakeFiles/ptfe_runEvent.dir/ptfe_runEvent.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ptfe_runEvent.dir/ptfe_runEvent.cc.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sdporzio/1_CurrentWork/ptfe_runEvent.cc -o CMakeFiles/ptfe_runEvent.dir/ptfe_runEvent.cc.s
 
+CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
+CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.o: ../src/G4LindhardPartition.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.o -c /Users/sdporzio/1_CurrentWork/src/G4LindhardPartition.cc
+
+CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sdporzio/1_CurrentWork/src/G4LindhardPartition.cc > CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.i
+
+CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sdporzio/1_CurrentWork/src/G4LindhardPartition.cc -o CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.s
+
+CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
+CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.o: ../src/G4ScreenedNuclearRecoil.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.o -c /Users/sdporzio/1_CurrentWork/src/G4ScreenedNuclearRecoil.cc
+
+CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sdporzio/1_CurrentWork/src/G4ScreenedNuclearRecoil.cc > CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.i
+
+CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sdporzio/1_CurrentWork/src/G4ScreenedNuclearRecoil.cc -o CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.s
+
+CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
+CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.o: ../src/PhysListEmStandardNR.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.o -c /Users/sdporzio/1_CurrentWork/src/PhysListEmStandardNR.cc
+
+CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sdporzio/1_CurrentWork/src/PhysListEmStandardNR.cc > CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.i
+
+CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sdporzio/1_CurrentWork/src/PhysListEmStandardNR.cc -o CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.s
+
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o: ../src/ptfe_actionInitialization.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o -c /Users/sdporzio/1_CurrentWork/src/ptfe_actionInitialization.cc
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.i: cmake_force
@@ -102,7 +141,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.s: cmake_force
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o: ../src/ptfe_anaTrack.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o -c /Users/sdporzio/1_CurrentWork/src/ptfe_anaTrack.cc
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.i: cmake_force
@@ -115,7 +154,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.s: cmake_force
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o: ../src/ptfe_detectorConstruction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o -c /Users/sdporzio/1_CurrentWork/src/ptfe_detectorConstruction.cc
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.i: cmake_force
@@ -128,7 +167,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.s: cmake_force
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.o: ../src/ptfe_eventAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.o -c /Users/sdporzio/1_CurrentWork/src/ptfe_eventAction.cc
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.i: cmake_force
@@ -141,7 +180,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_eventAction.cc.s: cmake_force
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o: ../src/ptfe_physicsList.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.o -c /Users/sdporzio/1_CurrentWork/src/ptfe_physicsList.cc
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.i: cmake_force
@@ -154,7 +193,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_physicsList.cc.s: cmake_force
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o: ../src/ptfe_primaryGeneratorAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.o -c /Users/sdporzio/1_CurrentWork/src/ptfe_primaryGeneratorAction.cc
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.i: cmake_force
@@ -167,7 +206,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_primaryGeneratorAction.cc.s: cmake_force
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.o: ../src/ptfe_runAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.o -c /Users/sdporzio/1_CurrentWork/src/ptfe_runAction.cc
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.i: cmake_force
@@ -180,7 +219,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_runAction.cc.s: cmake_force
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o: ../src/ptfe_steppingAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.o -c /Users/sdporzio/1_CurrentWork/src/ptfe_steppingAction.cc
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.i: cmake_force
@@ -193,7 +232,7 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_steppingAction.cc.s: cmake_force
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_surfaceParameterisation.cc.o: CMakeFiles/ptfe_runEvent.dir/flags.make
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_surfaceParameterisation.cc.o: ../src/ptfe_surfaceParameterisation.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_surfaceParameterisation.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ptfe_runEvent.dir/src/ptfe_surfaceParameterisation.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ptfe_runEvent.dir/src/ptfe_surfaceParameterisation.cc.o -c /Users/sdporzio/1_CurrentWork/src/ptfe_surfaceParameterisation.cc
 
 CMakeFiles/ptfe_runEvent.dir/src/ptfe_surfaceParameterisation.cc.i: cmake_force
@@ -207,6 +246,9 @@ CMakeFiles/ptfe_runEvent.dir/src/ptfe_surfaceParameterisation.cc.s: cmake_force
 # Object files for target ptfe_runEvent
 ptfe_runEvent_OBJECTS = \
 "CMakeFiles/ptfe_runEvent.dir/ptfe_runEvent.cc.o" \
+"CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.o" \
+"CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.o" \
+"CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.o" \
 "CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o" \
 "CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o" \
 "CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o" \
@@ -221,6 +263,9 @@ ptfe_runEvent_OBJECTS = \
 ptfe_runEvent_EXTERNAL_OBJECTS =
 
 ptfe_runEvent: CMakeFiles/ptfe_runEvent.dir/ptfe_runEvent.cc.o
+ptfe_runEvent: CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.o
+ptfe_runEvent: CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.o
+ptfe_runEvent: CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.o
 ptfe_runEvent: CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o
 ptfe_runEvent: CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o
 ptfe_runEvent: CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o
@@ -279,7 +324,7 @@ ptfe_runEvent: /Users/sdporzio/Software/geant4.10.06.p01/install/lib/libG4interc
 ptfe_runEvent: /Users/sdporzio/Software/geant4.10.06.p01/install/lib/libG4global.dylib
 ptfe_runEvent: /Users/sdporzio/Software/geant4.10.06.p01/install/lib/libG4clhep.dylib
 ptfe_runEvent: CMakeFiles/ptfe_runEvent.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable ptfe_runEvent"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/sdporzio/1_CurrentWork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable ptfe_runEvent"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ptfe_runEvent.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

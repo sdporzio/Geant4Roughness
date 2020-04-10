@@ -1,5 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ptfe_runEvent.dir/ptfe_runEvent.cc.o"
+  "CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.o"
+  "CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.o"
+  "CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.o"
   "CMakeFiles/ptfe_runEvent.dir/src/ptfe_actionInitialization.cc.o"
   "CMakeFiles/ptfe_runEvent.dir/src/ptfe_anaTrack.cc.o"
   "CMakeFiles/ptfe_runEvent.dir/src/ptfe_detectorConstruction.cc.o"

@@ -213,6 +213,87 @@ ptfe_runEvent.cc.s:
 	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/ptfe_runEvent.cc.s
 .PHONY : ptfe_runEvent.cc.s
 
+src/G4LindhardPartition.o: src/G4LindhardPartition.cc.o
+
+.PHONY : src/G4LindhardPartition.o
+
+# target to build an object file
+src/G4LindhardPartition.cc.o:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.o
+.PHONY : src/G4LindhardPartition.cc.o
+
+src/G4LindhardPartition.i: src/G4LindhardPartition.cc.i
+
+.PHONY : src/G4LindhardPartition.i
+
+# target to preprocess a source file
+src/G4LindhardPartition.cc.i:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.i
+.PHONY : src/G4LindhardPartition.cc.i
+
+src/G4LindhardPartition.s: src/G4LindhardPartition.cc.s
+
+.PHONY : src/G4LindhardPartition.s
+
+# target to generate assembly for a file
+src/G4LindhardPartition.cc.s:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/G4LindhardPartition.cc.s
+.PHONY : src/G4LindhardPartition.cc.s
+
+src/G4ScreenedNuclearRecoil.o: src/G4ScreenedNuclearRecoil.cc.o
+
+.PHONY : src/G4ScreenedNuclearRecoil.o
+
+# target to build an object file
+src/G4ScreenedNuclearRecoil.cc.o:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.o
+.PHONY : src/G4ScreenedNuclearRecoil.cc.o
+
+src/G4ScreenedNuclearRecoil.i: src/G4ScreenedNuclearRecoil.cc.i
+
+.PHONY : src/G4ScreenedNuclearRecoil.i
+
+# target to preprocess a source file
+src/G4ScreenedNuclearRecoil.cc.i:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.i
+.PHONY : src/G4ScreenedNuclearRecoil.cc.i
+
+src/G4ScreenedNuclearRecoil.s: src/G4ScreenedNuclearRecoil.cc.s
+
+.PHONY : src/G4ScreenedNuclearRecoil.s
+
+# target to generate assembly for a file
+src/G4ScreenedNuclearRecoil.cc.s:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/G4ScreenedNuclearRecoil.cc.s
+.PHONY : src/G4ScreenedNuclearRecoil.cc.s
+
+src/PhysListEmStandardNR.o: src/PhysListEmStandardNR.cc.o
+
+.PHONY : src/PhysListEmStandardNR.o
+
+# target to build an object file
+src/PhysListEmStandardNR.cc.o:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.o
+.PHONY : src/PhysListEmStandardNR.cc.o
+
+src/PhysListEmStandardNR.i: src/PhysListEmStandardNR.cc.i
+
+.PHONY : src/PhysListEmStandardNR.i
+
+# target to preprocess a source file
+src/PhysListEmStandardNR.cc.i:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.i
+.PHONY : src/PhysListEmStandardNR.cc.i
+
+src/PhysListEmStandardNR.s: src/PhysListEmStandardNR.cc.s
+
+.PHONY : src/PhysListEmStandardNR.s
+
+# target to generate assembly for a file
+src/PhysListEmStandardNR.cc.s:
+	$(MAKE) -f CMakeFiles/ptfe_runEvent.dir/build.make CMakeFiles/ptfe_runEvent.dir/src/PhysListEmStandardNR.cc.s
+.PHONY : src/PhysListEmStandardNR.cc.s
+
 src/ptfe_actionInitialization.o: src/ptfe_actionInitialization.cc.o
 
 .PHONY : src/ptfe_actionInitialization.o
@@ -472,6 +553,15 @@ help:
 	@echo "... ptfe_runEvent.o"
 	@echo "... ptfe_runEvent.i"
 	@echo "... ptfe_runEvent.s"
+	@echo "... src/G4LindhardPartition.o"
+	@echo "... src/G4LindhardPartition.i"
+	@echo "... src/G4LindhardPartition.s"
+	@echo "... src/G4ScreenedNuclearRecoil.o"
+	@echo "... src/G4ScreenedNuclearRecoil.i"
+	@echo "... src/G4ScreenedNuclearRecoil.s"
+	@echo "... src/PhysListEmStandardNR.o"
+	@echo "... src/PhysListEmStandardNR.i"
+	@echo "... src/PhysListEmStandardNR.s"
 	@echo "... src/ptfe_actionInitialization.o"
 	@echo "... src/ptfe_actionInitialization.i"
 	@echo "... src/ptfe_actionInitialization.s"

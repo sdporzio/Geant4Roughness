@@ -21,7 +21,8 @@ class ptfe_anaTrack
     G4double pxEnd, pyEnd, pzEnd;
     G4double eEnd, kEnd, tEnd;
     G4String volumeStart, volumeEnd;
-    G4double enDeposited, distTravelled;
+    G4double distTravelled;
+    G4double enDeposited_tot, enDeposited_wall, enDeposited_surface, enDeposited_cushion, enDeposited_world;
 };
 
 #endif
