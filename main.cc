@@ -17,7 +17,7 @@ int main(int argc,char** argv)
   CLHEP::HepRandom::setTheEngine(new CLHEP::RanecuEngine());
   CLHEP::HepRandom::setTheSeed(121);
   G4bool visual = false;
-  G4int nEvents = 1000000;
+  G4int nEvents = 100;
 
   // INITIALIZE THE UI CLASS
   G4UIExecutive* ui = 0;
@@ -46,7 +46,7 @@ int main(int argc,char** argv)
 
   // UI class
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
-  UImanager->ApplyCommand("/control/execute initialize.mac");
+  UImanager->ApplyCommand("/control/execute mac/initialize.mac");
   if(visual) ui->SessionStart(); // Uncomment this to enable UI
 
   // BATCH RUN

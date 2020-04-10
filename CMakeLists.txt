@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------
 # Setup the project
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
-project(ptfe_runEvent)
+project(main)
 
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default
@@ -33,19 +33,18 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 
-add_executable(ptfe_runEvent ptfe_runEvent.cc ${sources} ${headers})
-target_link_libraries(ptfe_runEvent ${Geant4_LIBRARIES})
+add_executable(main main.cc ${sources} ${headers})
+target_link_libraries(main ${Geant4_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # Copy .mac scripts
 
 file(GLOB PTFE_SCRIPTS ${PROJECT_SOURCE_DIR}/mac/*.mac)
-file(COPY initialize.mac DESTINATION ${PROJECT_BINARY_DIR})
 file(COPY ${PTFE_SCRIPTS} DESTINATION ${PROJECT_BINARY_DIR}/mac)
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 
-install(TARGETS ptfe_runEvent DESTINATION bin)
+install(TARGETS main DESTINATION bin)
 
 
