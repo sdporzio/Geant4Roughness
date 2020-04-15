@@ -50,7 +50,7 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   // Uniform generation at 100 nm depth + cushion
   G4double x1  = -(myDetector->WallWidth()/10.);
   G4double y1  = -(myDetector->WallWidth()/10.);
-  G4double z1  = -100*nm;
+  G4double z1  = -100*um;
 
   G4double x2  = (myDetector->WallWidth()/10.);
   G4double y2  = (myDetector->WallWidth()/10.);

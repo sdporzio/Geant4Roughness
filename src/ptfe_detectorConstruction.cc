@@ -26,7 +26,7 @@ ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruc
   fActivateRoughness(true),
   fWallWidth(100.*CLHEP::um),
   fWallDepth(100.*CLHEP::um),
-  fFeaturesHeight(0.),
+  fFeaturesHeight(0.1*CLHEP::nm),
   fBaseWidth(0.),
   fFeaturesSpacing(0.)
 {

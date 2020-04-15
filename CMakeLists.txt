@@ -21,6 +21,7 @@ endif()
 
 include(${Geant4_USE_FILE})
 include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include/NR_Physics)
 
 
 #----------------------------------------------------------------------------
@@ -29,18 +30,21 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
+file(GLOB nr_sources ${PROJECT_SOURCE_DIR}/src/NR_Physics/*.cc)
+file(GLOB nr_headers ${PROJECT_SOURCE_DIR}/include/NR_Physics/*.hh)
 
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 
-add_executable(main main.cc ${sources} ${headers})
+add_executable(main main.cc ${sources} ${headers} ${nr_sources} ${nr_headers})
 target_link_libraries(main ${Geant4_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # Copy .mac scripts
 
-file(GLOB PTFE_SCRIPTS ${PROJECT_SOURCE_DIR}/mac/*.mac)
+file(GLOB PTFE_SCRIPTS ${PROJECT_SOURCE_DIR}/mac/*)
 file(COPY ${PTFE_SCRIPTS} DESTINATION ${PROJECT_BINARY_DIR}/mac)
+file(COPY initialize.mac DESTINATION ${PROJECT_BINARY_DIR})
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
