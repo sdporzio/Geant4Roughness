@@ -14,10 +14,18 @@
 // MAIN FUNCTION
 int main(int argc,char** argv)
 {
+  // DEFAULT SETTINGS
+  G4int nEvents = 1;
+  G4int visual = 0;
+  G4int seed = 111;
+  // INLINE OVERRIDES
+  if(argc>1) nEvents = std::stoi(argv[1]);
+  if(argc>2) seed = std::stoi(argv[2]);
+  if(argc>3) visual = std::stoi(argv[3]);
+
+  // SET RANDOM SEED
   CLHEP::HepRandom::setTheEngine(new CLHEP::RanecuEngine());
-  CLHEP::HepRandom::setTheSeed(121);
-  G4bool visual = false;
-  G4int nEvents = 100;
+  CLHEP::HepRandom::setTheSeed(seed);
 
   // INITIALIZE THE UI CLASS
   G4UIExecutive* ui = 0;
@@ -42,15 +50,19 @@ int main(int argc,char** argv)
   // OPTIONAL CLASSES
   // Visualization class
   G4VisManager* visManager = new G4VisExecutive;
-  if(visual) visManager->Initialize();
-
   // UI class
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
-  UImanager->ApplyCommand("/control/execute mac/initialize.mac");
-  if(visual) ui->SessionStart(); // Uncomment this to enable UI
+  UImanager->ApplyCommand("/control/execute initialize.mac");
 
+  // RUN TIME FOR VISUAL
+  if(visual)
+  {
+    visManager->Initialize();
+    UImanager->ApplyCommand("/control/execute mac/visualization/vis_settings_basic.mac");
+    UImanager->ApplyCommand("/run/beamOn "+std::to_string(nEvents));
+    ui->SessionStart();
+  }
   // BATCH RUN
-  // Run simulation
   if(!visual)
   {
     runManager->Initialize();
