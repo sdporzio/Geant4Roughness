@@ -118,8 +118,6 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
   G4Material* in_material = teflon;
   G4Material* out_material = liquidXe;
 
-
-
   // WALL DIMENSIONS
   // Obtain number of features per side (round by excess)
   printf("Input wall dimensions: %.1f x %.1f x %.1f um\n", fWallWidth/CLHEP::um, fWallWidth/CLHEP::um,fWallDepth/CLHEP::um);
@@ -139,6 +137,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
     wall_sizeXY = fWallWidth;
     wall_sizeZ = fWallDepth;
   }
+
 
   // WORLD
   // World is two times bigger than surface
@@ -166,6 +165,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
   G4VisAttributes* worldColour= new G4VisAttributes(G4Colour(0.2,0.2,0.9,0.1));
   logicWorld->SetVisAttributes(worldColour);
 
+
   // WALL
   G4Box* solidWall =    
     new G4Box("Wall",                                           //name
@@ -184,8 +184,9 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
                       0,                     //copy number
                       checkOverlaps);        //overlaps checking
   // Move it back, so z=0 is on the surface and not the center of the wall
-  G4ThreeVector wallOrigin(0, 0, -wall_sizeZ*0.5);
-  physWall->SetTranslation(wallOrigin);
+  //--Alvine to Davide: changed the two lignes below to resolve the issue with he overlaps between volumes
+  //G4ThreeVector wallOrigin(0, 0, -wall_sizeZ*0.5);
+  //physWall->SetTranslation(wallOrigin);
   // Give it a sensible colour
   G4VisAttributes* wallColour= new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.75));
   logicWall->SetVisAttributes(wallColour);
@@ -202,18 +203,20 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
       new G4LogicalVolume(solidCushion,    //solid
                           out_material,        //material
                           "Cushion");      //name     
+    G4ThreeVector cushionOrigin(0, 0, wall_sizeZ*0.5+fFeaturesHeight*0.5); //Alvine to Davide, define cushion position like this instead
     G4VPhysicalVolume* physCushion = 
       new G4PVPlacement(0,                     //no rotation
                         G4ThreeVector(),       //at (0,0,0)
-                        logicCushion,             //logical volume
-                        "Wall",                //name
+                        cushionOrigin,         //G4ThreeVector(),       //at (0,0,0) starting x,y,z positions //Alvine to Davide, define cushion position like this instead
+                        "Cushion",             //name  //--Alvine to Davide: I changed this 
                         logicWorld,            //mother  volume
                         false,                 //no boolean operation
                         0,                     //copy number
                         checkOverlaps);        //overlaps checking
     // Move it back, so z=0 is on the surface and not the center of the wall
-    G4ThreeVector cushionOrigin(0, 0, fFeaturesHeight*0.5);
-    physCushion->SetTranslation(cushionOrigin);
+    //--Alvine to Davide: changed the two lignes below to resolve the issue with he overlaps between volumes
+    //G4ThreeVector cushionOrigin(0, 0, fFeaturesHeight*0.5);
+    //physCushion->SetTranslation(cushionOrigin);
     // Give it a sensible colour
     G4VisAttributes* cushionColour= new G4VisAttributes(G4Colour(0.5,0.5,1,0.1));
     logicCushion->SetVisAttributes(cushionColour);
