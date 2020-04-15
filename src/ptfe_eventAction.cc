@@ -1,3 +1,4 @@
+
 #include "ptfe_eventAction.hh"
 #include "ptfe_runAction.hh"
 #include "ptfe_anaTrack.hh"
@@ -40,7 +41,7 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
   if(isEventKilled) return;
 
 
-  // printf("SUMMARY OF EVENT %i\n", (int) event->GetEventID());
+  printf("SUMMARY OF EVENT %i\n", (int) event->GetEventID());
   G4TrajectoryContainer* trajectoryContainer = event->GetTrajectoryContainer();
   G4int n_trajectories = 0;
   if (trajectoryContainer) n_trajectories = trajectoryContainer->entries();
@@ -56,9 +57,14 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
     // printf("%s (%i) [TrackID: %i; ParentID: %i]\n", pname.c_str(),pdg,tid,gid);
   }
 
+  //primary positions: Alvine to Davide
+  G4PrimaryVertex* pvertex=event->GetPrimaryVertex();
+  G4ThreeVector vtx=pvertex->GetPosition();
+  cout<<"--------> primary positions to verify events location   "<<vtx[0]/nm <<"    "<<vtx[1]/nm <<"    "<<vtx[2]/nm <<endl;
 
   // Save metadata to the ROOT file
-  auto analysisManager = G4AnalysisManager::Instance(); G4int i = 0;
+  auto analysisManager = G4AnalysisManager::Instance(); 
+  G4int i = 0;
   analysisManager->FillNtupleIColumn(1,i,event->GetEventID()); i+=1;
   analysisManager->FillNtupleIColumn(1,i,fEventSeedIndex); i+=1;
   analysisManager->FillNtupleIColumn(1,i,fEventSeed1); i+=1;
@@ -133,8 +139,8 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
   }
 
   // Print some generic information out
-  // printf("RoughSurface total energy deposit: %.2f MeV\n",fEnDep["RoughSurface"]+fEnDep["Wall"]);
-  // printf("External total energy deposit: %.2f MeV\n",fEnDep["Cushion"]+fEnDep["World"]);
-
+  //printf("RoughSurface total energy deposit: %.2f keV\n",fEnDep["RoughSurface"]+fEnDep["Wall"]); //Alvine to Davide, units here are wrong, it should be keV not MeV
+  printf("External total energy deposit: %.2f keV\n",fEnDep["Cushion"]+fEnDep["World"]); //Alvine to Davide, units here are wrong, it should be keV not MeV
+  //myfile1<<(fEnDep["RoughSurface"]+fEnDep["Wall"]);
   // printf("\n");
 }

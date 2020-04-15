@@ -50,16 +50,24 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   // Uniform generation at 100 nm depth + cushion
   G4double x1  = -(myDetector->WallWidth()/10.);
   G4double y1  = -(myDetector->WallWidth()/10.);
-  G4double z1  = -100*um;
+  //G4double z1  = -100*nm;//this assume wall surface is at 0
+  G4double z1  = -100*nm + (myDetector->WallDepth()/2.0); 
+  //--Alvine to Davide: this z1 and z2 positions assume wall surface is at 0. With the fix I did on the detector construction, I also have to chage the z wall position for the primary
 
   G4double x2  = (myDetector->WallWidth()/10.);
   G4double y2  = (myDetector->WallWidth()/10.);
-  G4double z2  = (myDetector->FeaturesHeight());
+  //G4double z2  = (myDetector->FeaturesHeight());
+  G4double z2  = (myDetector->FeaturesHeight())+ (myDetector->WallDepth()/2.0);
   // G4double z2  = 0.;
 
-  G4double x0 = G4UniformRand()*abs(x2-x1) + x1;
-  G4double y0 = G4UniformRand()*abs(y2-y1) + y1;
-  G4double z0 = G4UniformRand()*abs(z2-z1) + z1;
+
+  G4double x0 = G4UniformRand()*abs(x2-x1) + x1; //Alvine to Davide:? 0+x1 so x1? this is wrong! 
+  G4double y0 = G4UniformRand()*abs(y2-y1) + y1; //Alvine to Davide:? 0+y1 so y1? this is wrong! //they should be uniform is x,y not point like. See changes below
+
+  //G4double x0 =-(myDetector->WallWidth()/2.) + (myDetector->WallWidth())*G4UniformRand();
+  //G4double y0 =-(myDetector->WallWidth()/2.) + (myDetector->WallWidth())*G4UniformRand();
+  G4double z0 = G4UniformRand()*abs(z2-z1) + z1; //The z of those events will be between -100nm inside ptfe to the height of the features. //events generated at height featureheiht above the smooth wall will be killed at the RunManager level so this is good.
+  //cout<<x0/nm <<"   "<<y0/nm <<"   "<<z0/nm <<endl;
   fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
 
 
