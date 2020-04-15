@@ -41,7 +41,7 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
   if(isEventKilled) return;
 
 
-  printf("SUMMARY OF EVENT %i\n", (int) event->GetEventID());
+  // printf("SUMMARY OF EVENT %i\n", (int) event->GetEventID());
   G4TrajectoryContainer* trajectoryContainer = event->GetTrajectoryContainer();
   G4int n_trajectories = 0;
   if (trajectoryContainer) n_trajectories = trajectoryContainer->entries();
@@ -60,7 +60,7 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
   //primary positions: Alvine to Davide
   G4PrimaryVertex* pvertex=event->GetPrimaryVertex();
   G4ThreeVector vtx=pvertex->GetPosition();
-  cout<<"--------> primary positions to verify events location   "<<vtx[0]/nm <<"    "<<vtx[1]/nm <<"    "<<vtx[2]/nm <<endl;
+  // cout<<"--------> primary positions to verify events location   "<<vtx[0]/nm <<"    "<<vtx[1]/nm <<"    "<<vtx[2]/nm <<endl;
 
   // Save metadata to the ROOT file
   auto analysisManager = G4AnalysisManager::Instance(); 
@@ -140,7 +140,7 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
 
   // Print some generic information out
   //printf("RoughSurface total energy deposit: %.2f keV\n",fEnDep["RoughSurface"]+fEnDep["Wall"]); //Alvine to Davide, units here are wrong, it should be keV not MeV
-  printf("External total energy deposit: %.2f keV\n",fEnDep["Cushion"]+fEnDep["World"]); //Alvine to Davide, units here are wrong, it should be keV not MeV
+  // printf("External total energy deposit: %.2f keV\n",fEnDep["Cushion"]+fEnDep["World"]); //Alvine to Davide, units here are wrong, it should be keV not MeV
   //myfile1<<(fEnDep["RoughSurface"]+fEnDep["Wall"]);
   // printf("\n");
 }

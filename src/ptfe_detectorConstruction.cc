@@ -28,7 +28,8 @@ ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruc
   fWallDepth(100.*CLHEP::um),
   fFeaturesHeight(0.1*CLHEP::nm),
   fBaseWidth(0.),
-  fFeaturesSpacing(0.)
+  fFeaturesSpacing(0.),
+  fContaminationDepth(100.*CLHEP::um)
 {
   fMessenger = new G4GenericMessenger(this,"/ptfe/surface/","...");
   fMessenger->DeclareProperty("activateRoughness",fActivateRoughness,"...");
@@ -37,6 +38,7 @@ ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruc
   fMessenger->DeclarePropertyWithUnit("baseWidth","um",fBaseWidth,"...");
   fMessenger->DeclarePropertyWithUnit("featuresHeight","um",fFeaturesHeight,"...");
   fMessenger->DeclarePropertyWithUnit("featuresSpacing","um",fFeaturesSpacing,"...");
+  fMessenger->DeclarePropertyWithUnit("contaminationDepth","um",fContaminationDepth,"...");
 
 }
 ptfe_detectorConstruction::~ptfe_detectorConstruction()
@@ -206,8 +208,8 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
     G4ThreeVector cushionOrigin(0, 0, wall_sizeZ*0.5+fFeaturesHeight*0.5); //Alvine to Davide, define cushion position like this instead
     G4VPhysicalVolume* physCushion = 
       new G4PVPlacement(0,                     //no rotation
-                        G4ThreeVector(),       //at (0,0,0)
-                        cushionOrigin,         //G4ThreeVector(),       //at (0,0,0) starting x,y,z positions //Alvine to Davide, define cushion position like this instead
+                        cushionOrigin,       //at (0,0,0)
+                        logicCushion,         //G4ThreeVector(),
                         "Cushion",             //name  //--Alvine to Davide: I changed this 
                         logicWorld,            //mother  volume
                         false,                 //no boolean operation

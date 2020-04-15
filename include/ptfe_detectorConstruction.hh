@@ -22,6 +22,7 @@ class ptfe_detectorConstruction : public G4VUserDetectorConstruction
     G4double FeaturesHeight() const { return fFeaturesHeight; }
     G4double BaseWidth() const { return fBaseWidth; }
     G4double FeaturesSpacing() const { return fFeaturesSpacing; }
+    G4double ContaminationDepth() const { return fContaminationDepth; }
 
   private:
     G4GenericMessenger* fMessenger; // Generic messenger class
@@ -33,6 +34,7 @@ class ptfe_detectorConstruction : public G4VUserDetectorConstruction
     G4double fFeaturesHeight; // The height of the features
     G4double fBaseWidth; // The width of the base of the pyramids
     G4double fFeaturesSpacing; // The space between the bases of the pyramids
+    G4double fContaminationDepth; // How deep in the surface does Po210 go
 };
 
 #endif
