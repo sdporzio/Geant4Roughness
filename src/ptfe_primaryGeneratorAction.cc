@@ -57,7 +57,8 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   G4double y2  = (myDetector->WallWidth()/2.) - 46*CLHEP::um;
 
   G4double z1  = (myDetector->WallDepth()/2.0) - (myDetector->ContaminationDepth()); 
-  G4double z2  = (myDetector->WallDepth()/2.0) + (myDetector->FeaturesHeight());
+  // G4double z2  = (myDetector->WallDepth()/2.0) + (myDetector->FeaturesHeight());
+  G4double z2  = (myDetector->WallDepth()/2.0) + (3.*CLHEP::um);
 
 
   G4double x0 = G4UniformRand()*abs(x2-x1) + x1;
