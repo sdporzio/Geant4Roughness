@@ -29,7 +29,8 @@ ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruc
   fFeaturesHeight(0.1*CLHEP::nm),
   fBaseWidth(0.),
   fFeaturesSpacing(0.),
-  fContaminationDepth(100.*CLHEP::um)
+  fContaminationDepth(100.*CLHEP::um),
+  fParametrisedContamination(false)
 {
   fMessenger = new G4GenericMessenger(this,"/ptfe/surface/","...");
   fMessenger->DeclareProperty("activateRoughness",fActivateRoughness,"...");
@@ -39,6 +40,7 @@ ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruc
   fMessenger->DeclarePropertyWithUnit("featuresHeight","um",fFeaturesHeight,"...");
   fMessenger->DeclarePropertyWithUnit("featuresSpacing","um",fFeaturesSpacing,"...");
   fMessenger->DeclarePropertyWithUnit("contaminationDepth","um",fContaminationDepth,"...");
+  fMessenger->DeclareProperty("parametricContamination",fParametrisedContamination,"...");
 
 }
 ptfe_detectorConstruction::~ptfe_detectorConstruction()
@@ -167,6 +169,33 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
   G4VisAttributes* worldColour= new G4VisAttributes(G4Colour(0.2,0.2,0.9,0.1));
   logicWorld->SetVisAttributes(worldColour);
 
+  // // TEST CUBE
+  //   G4Box* solidTestCube =    
+  //     new G4Box("TestCube",                                           //name
+  //        10*um, 10*um, 10*um);       //size 
+  //   G4LogicalVolume* logicTestCube =                         
+  //     new G4LogicalVolume(solidTestCube,        //solid
+  //                         in_material,         //material
+  //                         "TestCube");          //name                              
+  //   G4VPhysicalVolume* physTestCube = 
+  //     new G4PVPlacement(0,                     //no rotation
+  //                       G4ThreeVector(10*um,10*um,300*um),       //at (0,0,0)
+  //                       logicTestCube,             //logical volume
+  //                       "TestCube",                //name
+  //                       logicWorld,            //mother  volume
+  //                       false,                 //no boolean operation
+  //                       0,                     //copy number
+  //                       checkOverlaps);        //overlaps checking
+
+      
+    // Move it back, so z=0 is on the surface and not the center of the wall
+    //--Alvine to Davide: changed the two lignes below to resolve the issue with he overlaps between volumes
+    //G4ThreeVector wallOrigin(0, 0, -wall_sizeZ*0.5);
+    //physWall->SetTranslation(wallOrigin);
+    // Give it a sensible colour
+    G4VisAttributes* testCubeColour= new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.75));
+    logicTestCube->SetVisAttributes(testCubeColour);
+
 
   // WALL
   G4Box* solidWall =    
@@ -252,6 +281,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
     // Give it a sensible colour
     G4VisAttributes* spikesColour= new G4VisAttributes(G4Colour(0.9,0.9,0.9,1));
     logicPyramid->SetVisAttributes(spikesColour);
+
   } // END IF rough surface will be drawn
 
 
