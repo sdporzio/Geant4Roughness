@@ -56,8 +56,16 @@ G4VSolid* ptfe_surfaceGenerator::GenerateSurfaceSolid()
        wall_sizeXY*.5, wall_sizeXY*.5, wall_sizeZ*.5);       //size
 
 
+
+
   if(fActivateRoughness)
   {
+    return solidWall;
+  }
+  else
+  {
+    fBaseWidth = 20*m;
+    fFeaturesHeight = 20*m;
     // PYRAMID
     // Create pyramid solid
     G4double shape2_dxa = fBaseWidth, shape2_dxb = 0*cm;
@@ -69,30 +77,17 @@ G4VSolid* ptfe_surfaceGenerator::GenerateSurfaceSolid()
                 0.5*shape2_dya, 0.5*shape2_dyb, 0.5*shape2_dz);   //size
 
 
-    // Join the solids together
-    G4int totalNumberFeatures = fNumberFeaturesSide*fNumberFeaturesSide;
-    G4double originXY = -wall_sizeXY*.5 + fBaseWidth*.5;
-    G4double originZ = wall_sizeZ*.5 + fFeaturesHeight*.5;
     G4MultiUnion* unionSolid = new G4MultiUnion("RoughSurface");
+
     G4Transform3D tr1 = G4Transform3D(G4RotationMatrix(),G4ThreeVector());
     unionSolid->AddNode(*solidWall,tr1);
-    for(int i=0;i<totalNumberFeatures;i++)
-    {
 
-      G4int x_grid = (int) i/(fNumberFeaturesSide);
-      G4int y_grid = (int) i%(fNumberFeaturesSide);
-      G4double x_loc = x_grid*(fBaseWidth+fFeaturesSpacing);
-      G4double y_loc = y_grid*(fBaseWidth+fFeaturesSpacing);
+    G4Transform3D tr2 = G4Transform3D(G4RotationMatrix(),G4ThreeVector(0,0,19*m));
+    unionSolid->AddNode(*solidPyramid,tr2);
 
-      G4Transform3D tr2 = G4Transform3D(G4RotationMatrix(),G4ThreeVector(originXY+x_loc,originXY+y_loc,originZ));
-      unionSolid->AddNode(*solidPyramid,tr2);
-    }
     unionSolid->Voxelize();
+
     return unionSolid;
-  }
-  else
-  {
-    return solidWall;
   }
 
 }

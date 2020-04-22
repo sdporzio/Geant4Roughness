@@ -92,7 +92,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
                         "RoughSurface");          //name                              
   G4VPhysicalVolume* physWall = 
     new G4PVPlacement(0,                     //no rotation
-                      G4ThreeVector(0,0,-fWallDepth*0.5),
+                      G4ThreeVector(0,0,0),
                       logicWall,             //logical volume
                       "RoughSurface",                //name
                       logicWorld,            //mother  volume

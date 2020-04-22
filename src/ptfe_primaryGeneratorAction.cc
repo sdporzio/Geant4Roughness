@@ -39,7 +39,7 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
 
   G4String solidName;
   if(myDetector->ActivateRoughness()) solidName = G4String("RoughSurface");
-  else solidName = G4String("Wall");
+  else solidName = G4String("RoughSurface");
   auto surface_solid = G4SolidStore::GetInstance()->GetSolid(solidName);
   G4ThreeVector surface_origin = G4PhysicalVolumeStore::GetInstance()->GetVolume("RoughSurface")->GetTranslation();
 
@@ -60,13 +60,13 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   // We want to generate on the surface (and deep beneath it) but surface should
   // be "infinite", so none of the alphas needs to reach the edges of the wall-box
   // For that reason, maximum space is box width - 2*46um (for each side).
-  G4double x1  = -(myDetector->WallWidth()/2.) + 46*CLHEP::um;
-  G4double x2  = (myDetector->WallWidth()/2.) - 46*CLHEP::um;
-  G4double y1  = -(myDetector->WallWidth()/2.) + 46*CLHEP::um;
-  G4double y2  = (myDetector->WallWidth()/2.) - 46*CLHEP::um; 
+  G4double x1  = -50*m;
+  G4double x2  = 50*m;
+  G4double y1  = -50*m;
+  G4double y2  = 50*m;
   // Z goes from penetration depth to triangle height
-  G4double z1  = -(myDetector->ContaminationDepth());
-  G4double z2  = myDetector->FeaturesHeight(); 
+  G4double z1  = -50*m;
+  G4double z2  = 50*m;
 
   G4bool isDepthWrong = true;
   G4double x0, y0, z0;

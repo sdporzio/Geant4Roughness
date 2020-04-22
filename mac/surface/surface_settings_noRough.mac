@@ -1,4 +1,4 @@
 /ptfe/surface/activateRoughness false
-/ptfe/surface/wallWidth 200 um
-/ptfe/surface/wallDepth 200 um
+/ptfe/surface/wallWidth 20 m
+/ptfe/surface/wallDepth 20 m
 /ptfe/surface/parametricContamination False
