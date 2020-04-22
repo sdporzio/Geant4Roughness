@@ -45,6 +45,8 @@ target_link_libraries(main ${Geant4_LIBRARIES})
 file(GLOB PTFE_SCRIPTS ${PROJECT_SOURCE_DIR}/mac/*)
 file(COPY ${PTFE_SCRIPTS} DESTINATION ${PROJECT_BINARY_DIR}/mac)
 file(COPY initialize.mac DESTINATION ${PROJECT_BINARY_DIR})
+file(COPY initialize_vis.mac DESTINATION ${PROJECT_BINARY_DIR})
+
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX

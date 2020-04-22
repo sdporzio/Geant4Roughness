@@ -23,12 +23,6 @@ ptfe_primaryGeneratorAction::ptfe_primaryGeneratorAction()
 {
   G4int n_particle = 1;
   fParticleGun  = new G4ParticleGun(n_particle);
-  // fParticleSource = new G4GeneralParticleSource();
-  // G4String particleName;
-  // G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-  // G4ParticleDefinition* particle
-    // = particleTable->FindParticle(particleName="gamma");
-  // fParticleSource->GetCurrentSource()->SetParticleDefinition(particle);
 }
 
 ptfe_primaryGeneratorAction::~ptfe_primaryGeneratorAction(){}
@@ -42,11 +36,12 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
       = static_cast<const ptfe_detectorConstruction*>
         (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
   // Get a pointer to the surface (for MC purposes)
-  auto surface_solid = G4SolidStore::GetInstance()->GetSolid("RoughSurface");
-  G4ThreeVector surface_origin = G4PhysicalVolumeStore::GetInstance()->GetVolume("RoughSurface")->GetTranslation();
-  auto wall_solid = G4SolidStore::GetInstance()->GetSolid("Wall");
-  G4ThreeVector wall_origin = G4PhysicalVolumeStore::GetInstance()->GetVolume("Wall")->GetTranslation();
 
+  G4String solidName;
+  if(myDetector->ActivateRoughness()) solidName = G4String("RoughSurface");
+  else solidName = G4String("Wall");
+  auto surface_solid = G4SolidStore::GetInstance()->GetSolid(solidName);
+  G4ThreeVector surface_origin = G4PhysicalVolumeStore::GetInstance()->GetVolume("RoughSurface")->GetTranslation();
 
   //Generate one instance of specified particle
   G4int A = 210, Z = 84; // 210Po
@@ -57,60 +52,43 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   fParticleGun->SetParticleEnergy(0*eV);    
 
 
-
-
   // PARTICLE ORIGIN POINT
   // We don't generate decays in the liquid xenon. Start from the assumption we generated outside. Keep throwind random x,y,z until we end up inside the surface
-  G4bool outsideSurface = true;
+  
+  // CREATE RANGES FOR GENERATION
+  // The farthest-travelling particle (alpha in liquid xenon) goes around for 46um
+  // We want to generate on the surface (and deep beneath it) but surface should
+  // be "infinite", so none of the alphas needs to reach the edges of the wall-box
+  // For that reason, maximum space is box width - 2*46um (for each side).
+  G4double x1  = -(myDetector->WallWidth()/2.) + 46*CLHEP::um;
+  G4double x2  = (myDetector->WallWidth()/2.) - 46*CLHEP::um;
+  G4double y1  = -(myDetector->WallWidth()/2.) + 46*CLHEP::um;
+  G4double y2  = (myDetector->WallWidth()/2.) - 46*CLHEP::um; 
+  // Z goes from penetration depth to triangle height
+  G4double z1  = -(myDetector->ContaminationDepth());
+  G4double z2  = myDetector->FeaturesHeight(); 
 
-  while(outsideSurface)
+  G4bool isDepthWrong = true;
+  G4double x0, y0, z0;
+  // x0 = G4UniformRand()*abs(x2-x1) + x1;
+  // y0 = G4UniformRand()*abs(y2-y1) + y1;
+  // z0 = G4UniformRand()*abs(z2-z1) + z1;
+  G4int counter = 0;
+  while(isDepthWrong)
   {
-    // The farthest-travelling particle (alpha in liquid xenon) goes around for 46um
-    // We want to generate on the surface (and deep beneath it) but surface should be
-    // "infinite", so none of the alphas needs to reach the edges of the wall-box
-    // For that reason, maximum space is box width - 2*46um (for each side).
-    G4double x1  = -(myDetector->WallWidth()/2.) + 46*CLHEP::um;
-    G4double x2  = (myDetector->WallWidth()/2.) - 46*CLHEP::um;
-
-    G4double y1  = -(myDetector->WallWidth()/2.) + 46*CLHEP::um;
-    G4double y2  = (myDetector->WallWidth()/2.) - 46*CLHEP::um;
-
     // Generate random x,y point on the surface
-    G4double x0 = G4UniformRand()*abs(x2-x1) + x1;
-    G4double y0 = G4UniformRand()*abs(y2-y1) + y1; 
+    x0 = G4UniformRand()*abs(x2-x1) + x1;
+    y0 = G4UniformRand()*abs(y2-y1) + y1;
+    z0 = G4UniformRand()*abs(z2-z1) + z1;
+    G4ThreeVector loc(x0,y0,z0);
+    loc = loc - surface_origin;
+    G4bool isInside = (surface_solid->Inside(loc)==2);
+    G4bool isWithinContaminationDepth = (surface_solid->DistanceToOut(loc)<myDetector->ContaminationDepth());
 
-    // auto vol = G4PhysicalVolumeStore::GetInstance()->GetVolume("World");
+    isDepthWrong = !(isInside && isWithinContaminationDepth);
+    counter++;
 
-    // if(vol)
-    // {
-    //   G4ThreeVector origin = G4ThreeVector(0,0,0);
-    //   std::cout << vol << std::endl;
-    //   // std::cout << vol->GetSolid() << std::endl;
-    // }
-    // else printf("there's no vol\n");
-
-
-
-
-
-    // If we are using parametrised contamination, z depends on x and y coordinates
-    G4double z0;
-    if(myDetector->ParametrisedContamination())
-    {
-      G4double z1  = (myDetector->WallDepth()/2.0) - (myDetector->ContaminationDepth()); 
-      G4double z2  = (myDetector->WallDepth()/2.0) + (3.*CLHEP::um);
-      z0 = G4UniformRand()*abs(z2-z1) + z1;    
-    }
-    // If not, z is completely uncoupled
-    else
-    {
-      G4double z1  = (myDetector->WallDepth()/2.0) - (myDetector->ContaminationDepth()); 
-      G4double z2  = (myDetector->WallDepth()/2.0) + (3.*CLHEP::um);
-      z0 = G4UniformRand()*abs(z2-z1) + z1;     
-    }
-    
-  } // END WHILE we're outside the surface/wall
-
+  }
 
   // Set particle position
   fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));

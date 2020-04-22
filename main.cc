@@ -58,7 +58,7 @@ int main(int argc,char** argv)
   if(visual)
   {
     visManager->Initialize();
-    UImanager->ApplyCommand("/control/execute mac/visualization/vis_settings_basic.mac");
+    UImanager->ApplyCommand("/control/execute initialize_vis.mac");
     UImanager->ApplyCommand("/run/beamOn "+std::to_string(nEvents));
     ui->SessionStart();
   }

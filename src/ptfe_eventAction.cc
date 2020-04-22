@@ -5,6 +5,7 @@
 #include "Randomize.hh"
 #include "g4analysis.hh"
 #include "G4RunManager.hh"
+#include "G4Run.hh"
 #include "G4Event.hh"
 #include "G4VTrajectory.hh"
 
@@ -39,6 +40,16 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
 {
   G4bool isEventKilled = G4RunManager::GetRunManager()->GetCurrentEvent()->IsAborted();
   if(isEventKilled) return;
+
+  // const G4Run* thisRun = G4RunManager::GetRunManager()->GetCurrentRun();
+  G4int totNumber = G4RunManager::GetRunManager()->GetNumberOfEventsToBeProcessed();
+  G4int eNumber = event->GetEventID();
+  G4float perc = (eNumber/(float) totNumber)*100.;
+  if((int) (perc*10000)%200000==0)
+  {
+    printf("Processing event %i/%i [%.0f%%]\n",eNumber,totNumber,perc);
+  }
+
 
 
   // printf("SUMMARY OF EVENT %i\n", (int) event->GetEventID());
