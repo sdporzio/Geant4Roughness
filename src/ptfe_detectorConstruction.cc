@@ -12,6 +12,8 @@
 #include "G4Trd.hh"
 #include "G4VisAttributes.hh"
 #include "G4Colour.hh"
+#include "G4Polyhedra.hh"
+
 
 #include "G4Material.hh"
 #include "g4analysis.hh"
@@ -86,6 +88,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
   // WALL
   ptfe_surfaceGenerator* sg = new ptfe_surfaceGenerator();
   G4VSolid* solidWall = sg->GenerateSurfaceSolid();
+
   G4LogicalVolume* logicWall =                         
     new G4LogicalVolume(solidWall,        //solid
                         in_material,         //material

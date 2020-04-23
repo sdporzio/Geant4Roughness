@@ -1,6 +1,8 @@
 #ifndef ptfe_surfaceGenerator_h
 #define ptfe_surfaceGenerator_h 1
 #include "G4VSolid.hh"
+#include "G4MultiUnion.hh"
+
 
 // Construction class for parameterised surface with repeated elements
 class ptfe_surfaceGenerator
