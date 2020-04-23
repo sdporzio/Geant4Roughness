@@ -26,25 +26,6 @@ void ptfe_steppingAction::UserSteppingAction(const G4Step* step)
   G4int parentId = step->GetTrack()->GetParentID();
   G4String pname = step->GetTrack()->GetParticleDefinition()->GetParticleName();
 
-  // Check that the decay has been generated INSIDE either the wall or the surface.
-  // If not, kill the event and retry
-  G4bool isMother = (parentId==0);
-  G4bool isOutside = (volumeName=="Cushion" || volumeName=="World");
-  // if(isMother) printf("Mother in %s.\n",volumeName.c_str());
-  if(isMother && isOutside)
-  {
-    printf("-> EVENT %i has generated mother (ID=%i) in volume %s. ABORTING EVENT\n", G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID(),parentId,volumeName.c_str());
-    G4RunManager::GetRunManager()->AbortEvent(); 
-  }
-  // Check that alpha is not travelling towards xenon
-  // G4bool isAlpha = (pname=="alpha");
-  // if(isAlpha && isOutside)
-  // {
-  //   printf("-> EVENT %i has generated alpha (ID=%i) in volume %s. ABORTING EVENT\n", G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID(),parentId,volumeName.c_str());
-  //   G4RunManager::GetRunManager()->AbortEvent(); 
-  // }
-
-
   G4StepPoint* prepoint = step->GetPreStepPoint();
   G4StepPoint* postpoint = step->GetPostStepPoint();
 

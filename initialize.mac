@@ -1,8 +1,12 @@
 #/control/execute mac/surface_idVolume/surface_settings_noRough.mac
 #/control/execute mac/surface_idVolume/surface_settings_scale1.mac
-/control/execute mac/surface_idVolume/surface_settings_scale2.mac
+#/control/execute mac/surface_idVolume/surface_settings_scale2.mac
 
-/control/execute mac/contamination/standardContamination_3nm.mac
+/control/execute mac/surface/surface_settings_noRough.mac
+#/control/execute mac/surface/surface_settings_scale1.mac
+#/control/execute mac/surface/surface_settings_scale2.mac
+
+/control/execute mac/contamination/standardContamination_100nm.mac
 /control/execute mac/verbose_settings.mac
 /control/execute mac/analysis_settings.mac
 

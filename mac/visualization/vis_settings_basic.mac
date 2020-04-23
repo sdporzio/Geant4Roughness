@@ -1,5 +1,6 @@
 #-> OpenGL window
 /vis/open OGL 600x600-0+0
+
 ###########################
 #-> Disable auto refresh and quieten vis messages
 #-> whilst the macro does is job:
