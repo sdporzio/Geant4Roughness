@@ -1,5 +1,6 @@
 #include "ptfe_primaryGeneratorAction.hh"
 #include "ptfe_detectorConstruction.hh"
+#include "ptfe_surfaceGenerator.hh"
 
 #include "G4ParticleGun.hh"
 #include "G4RunManager.hh"
@@ -23,6 +24,8 @@ ptfe_primaryGeneratorAction::ptfe_primaryGeneratorAction()
 {
   G4int n_particle = 1;
   fParticleGun  = new G4ParticleGun(n_particle);
+  fParticleGun1  = new G4ParticleGun(n_particle);
+  fParticleGun2  = new G4ParticleGun(n_particle);
 }
 
 ptfe_primaryGeneratorAction::~ptfe_primaryGeneratorAction(){}
@@ -35,39 +38,43 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   const ptfe_detectorConstruction* myDetector
       = static_cast<const ptfe_detectorConstruction*>
         (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
-  // Get a pointer to the surface (for MC purposes)
+  ptfe_surfaceGenerator* sg = myDetector->GetSG();
+  G4double x1 = -1*um;
+  G4double x2 = 1*um;
+  G4double y1 = sg->GetMinY() - 0.2*um;
+  G4double y2 = sg->GetMaxY();
+  G4double z1 = sg->GetMinX() + 20*um;
+  G4double z2 = sg->GetMaxX() - 20*um;
 
-  G4String solidName;
-  if(myDetector->ActivateRoughness()) solidName = G4String("RoughSurface");
-  else solidName = G4String("Wall");
-  auto surface_solid = G4SolidStore::GetInstance()->GetSolid(solidName);
+  // Get a pointer to the surface (for MC purposes)
+  auto surface_solid = G4SolidStore::GetInstance()->GetSolid("RoughSurface");
   G4ThreeVector surface_origin = G4PhysicalVolumeStore::GetInstance()->GetVolume("RoughSurface")->GetTranslation();
 
-  //Generate one instance of specified particle
-  G4int A = 210, Z = 84; // 210Po
-  G4ParticleDefinition* ion
+  // //Generate one instance of specified particle
+  // G4int A = 210, Z = 84; // 210Po
+  // G4ParticleDefinition* ion
+  //      = G4IonTable::GetIonTable()->GetIon(Z,A);
+  // fParticleGun->SetParticleDefinition(ion);
+  // fParticleGun->SetParticleCharge(0.);
+  // fParticleGun->SetParticleEnergy(0*eV);
+
+  // Alternatively, generate directly the decay products
+  G4String particleName;
+  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+  G4ParticleDefinition* alpha
+    = particleTable->FindParticle(particleName="alpha");
+  fParticleGun1->SetParticleDefinition(alpha);
+  fParticleGun1->SetParticleEnergy(5.304307*MeV);
+
+  G4int A = 206, Z = 82; // 206Pb
+  G4ParticleDefinition* lead
        = G4IonTable::GetIonTable()->GetIon(Z,A);
-  fParticleGun->SetParticleDefinition(ion);
-  fParticleGun->SetParticleCharge(0.);
-  fParticleGun->SetParticleEnergy(0*eV);    
+  fParticleGun2->SetParticleDefinition(lead);
+  fParticleGun2->SetParticleEnergy(0.103143*MeV);
 
 
   // PARTICLE ORIGIN POINT
   // We don't generate decays in the liquid xenon. Start from the assumption we generated outside. Keep throwind random x,y,z until we end up inside the surface
-  
-  // CREATE RANGES FOR GENERATION
-  // The farthest-travelling particle (alpha in liquid xenon) goes around for 46um
-  // We want to generate on the surface (and deep beneath it) but surface should
-  // be "infinite", so none of the alphas needs to reach the edges of the wall-box
-  // For that reason, maximum space is box width - 2*46um (for each side).
-  G4double x1  = -(myDetector->WallWidth()/2.) + 46*CLHEP::um;
-  G4double x2  = (myDetector->WallWidth()/2.) - 46*CLHEP::um;
-  G4double y1  = -(myDetector->WallWidth()/2.) + 46*CLHEP::um;
-  G4double y2  = (myDetector->WallWidth()/2.) - 46*CLHEP::um; 
-  // Z goes from penetration depth to triangle height
-  G4double z1  = -(myDetector->ContaminationDepth());
-  G4double z2  = myDetector->FeaturesHeight(); 
-
   G4bool isDepthWrong = true;
   G4double x0, y0, z0;
   // x0 = G4UniformRand()*abs(x2-x1) + x1;
@@ -83,14 +90,24 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
     G4ThreeVector loc(x0,y0,z0);
     loc = loc - surface_origin;
     G4bool isInside = (surface_solid->Inside(loc)==2);
-    G4bool isWithinContaminationDepth = (surface_solid->DistanceToOut(loc)<myDetector->ContaminationDepth());
+    G4bool isWithinContaminationDepth = (surface_solid->DistanceToOut(loc)<myDetector->GetContaminationDepth());
 
+    // isDepthWrong = false;
     isDepthWrong = !(isInside && isWithinContaminationDepth);
     counter++;
 
   }
 
   // Set particle position
-  fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
-  fParticleGun->GeneratePrimaryVertex(event);
+  // printf("%.1f, %.1f, %.1f\n\n\n", x0/um, y0/um, z0/um);
+  // fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
+  // fParticleGun->GeneratePrimaryVertex(event);
+
+  fParticleGun1->SetParticlePosition(G4ThreeVector(x0,y0,z0));
+  fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(0,1,0));
+  fParticleGun1->GeneratePrimaryVertex(event);
+
+  fParticleGun2->SetParticlePosition(G4ThreeVector(x0,y0,z0));
+  fParticleGun2->SetParticleMomentumDirection(G4ThreeVector(0,-1,0));
+  fParticleGun2->GeneratePrimaryVertex(event);
 };

@@ -18,26 +18,10 @@
 
 // Construct/Deconstructor
 ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruction(),
-  fMessenger(nullptr),
-  fActivateRoughness(true),
-  fWallWidth(100.*um),
-  fWallDepth(100.*um),
-  fFeaturesHeight(0.1*nm),
-  fBaseWidth(0.),
-  fFeaturesSpacing(0.),
-  fContaminationDepth(100.*um),
-  fParametrisedContamination(false)
+  fMessenger(nullptr)
 {
   fMessenger = new G4GenericMessenger(this,"/ptfe/surface/","");
-  fMessenger->DeclareProperty("activateRoughness",fActivateRoughness,"");
-  fMessenger->DeclarePropertyWithUnit("wallWidth","um",fWallWidth,"");
-  fMessenger->DeclarePropertyWithUnit("wallDepth","um",fWallDepth,"");
-  fMessenger->DeclarePropertyWithUnit("baseWidth","um",fBaseWidth,"");
-  fMessenger->DeclarePropertyWithUnit("featuresHeight","um",fFeaturesHeight,"");
-  fMessenger->DeclarePropertyWithUnit("featuresSpacing","um",fFeaturesSpacing,"");
   fMessenger->DeclarePropertyWithUnit("contaminationDepth","um",fContaminationDepth,"");
-  fMessenger->DeclareProperty("parametricContamination",fParametrisedContamination,"");
-
 }
 ptfe_detectorConstruction::~ptfe_detectorConstruction()
 {
@@ -56,10 +40,15 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
   G4Material* in_material = materials->MakeTeflon();
   G4Material* out_material = materials->MakeLiquidXe();
 
+  //ROUGH SURFACE (1D)
+  fSg = new ptfe_surfaceGenerator();
+  G4VSolid* solidWall = fSg->GenerateSurfaceSolid_1();
+
+
   // WORLD
   // World is five times bigger than surface
-  G4double world_sizeXY = fWallWidth*5;
-  G4double world_sizeZ = fWallDepth*5;
+  G4double world_sizeXY = fSg->GetMaxY()*10;
+  G4double world_sizeZ = fSg->GetLength()*10;
   printf("World dimensions: %.1f x %.1f x %.1f um\n", world_sizeXY/um, world_sizeXY/um,world_sizeZ/um);
   // Build the world
   G4Box* solidWorld =    
@@ -84,15 +73,13 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
 
 
   // WALL
-  ptfe_surfaceGenerator* sg = new ptfe_surfaceGenerator();
-  G4VSolid* solidWall = sg->GenerateSurfaceSolid();
   G4LogicalVolume* logicWall =                         
     new G4LogicalVolume(solidWall,        //solid
                         in_material,         //material
                         "RoughSurface");          //name                              
   G4VPhysicalVolume* physWall = 
     new G4PVPlacement(0,                     //no rotation
-                      G4ThreeVector(0,0,-fWallDepth*0.5),
+                      G4ThreeVector(0,0,0),
                       logicWall,             //logical volume
                       "RoughSurface",                //name
                       logicWorld,            //mother  volume

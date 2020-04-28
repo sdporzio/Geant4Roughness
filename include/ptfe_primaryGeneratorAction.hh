@@ -22,6 +22,8 @@ class ptfe_primaryGeneratorAction : public G4VUserPrimaryGeneratorAction
   private:
     G4GeneralParticleSource* fParticleSource;
     G4ParticleGun* fParticleGun;
+    G4ParticleGun* fParticleGun1;
+    G4ParticleGun* fParticleGun2;
 
 };
 

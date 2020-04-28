@@ -8,6 +8,8 @@
 #include "G4Run.hh"
 #include "G4Event.hh"
 #include "G4VTrajectory.hh"
+#include "G4RadioactiveDecayBaseMessenger.hh"
+
 
 ptfe_eventAction::ptfe_eventAction(ptfe_runAction* runAction)
 : G4UserEventAction(),
@@ -34,6 +36,7 @@ void ptfe_eventAction::BeginOfEventAction(const G4Event* event)
   fEnDep_vector["RoughSurface"].clear();
 
   fAnaTrack.clear();
+
 }     
 
 void ptfe_eventAction::EndOfEventAction(const G4Event* event)

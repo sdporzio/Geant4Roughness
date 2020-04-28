@@ -38,6 +38,8 @@ void ptfe_steppingAction::UserSteppingAction(const G4Step* step)
   G4Track* track = step->GetTrack();
   G4int track_id = track->GetTrackID();
 
+
+
   // Check if the anaTrack class has ever seen this track before
   // If it doesn't exist yet, create it and initialise it
   if((fEventAction->fAnaTrack.count(track_id))==0)

@@ -9,16 +9,24 @@ class ptfe_surfaceGenerator
     ptfe_surfaceGenerator();
     virtual ~ptfe_surfaceGenerator();
 
-    virtual G4VSolid* GenerateSurfaceSolid();
+    virtual G4VSolid* GenerateSurfaceSolid_1();
+    // virtual G4VSolid* GenerateSurfaceSolid_2();
+    // virtual G4VSolid* GenerateSurfaceSolid_3();
+    G4double GetMinY(){ return fMinY; }
+    G4double GetMaxY(){ return fMaxY; }
+    G4double GetMinX(){ return fMinX; }
+    G4double GetMaxX(){ return fMaxX; }
+    G4double GetLength(){ return fLength; }
 
   private:
-    G4int fNumberFeaturesSide;
-    G4bool fActivateRoughness;
-    G4double fWallWidth;
-    G4double fWallDepth;
-    G4double fFeaturesHeight;
-    G4double fBaseWidth;
-    G4double fFeaturesSpacing;
+  G4int fNumSide;
+  G4int fNumZPlanes;
+  G4double fMinY;
+  G4double fMaxY;
+  G4double fMinX;
+  G4double fMaxX;
+  G4double fLength;
 };
 
 #endif
+
