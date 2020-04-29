@@ -29,19 +29,18 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   analysisManager->CreateNtupleIColumn("seed_event1");
   analysisManager->CreateNtupleIColumn("seed_event2");
 
-  analysisManager->CreateNtupleIColumn("nhits_world");  
-  analysisManager->CreateNtupleIColumn("nhits_cushion");
-  analysisManager->CreateNtupleIColumn("nhits_wall");   
-  analysisManager->CreateNtupleIColumn("nhits_surface");
-  analysisManager->CreateNtupleIColumn("nhits_in");     
-  analysisManager->CreateNtupleIColumn("nhits_out"); 
-
-  analysisManager->CreateNtupleDColumn("edep_world");   
-  analysisManager->CreateNtupleDColumn("edep_cushion"); 
-  analysisManager->CreateNtupleDColumn("edep_wall");    
-  analysisManager->CreateNtupleDColumn("edep_surface"); 
-  analysisManager->CreateNtupleDColumn("edep_in");       
-  analysisManager->CreateNtupleDColumn("edep_out");      
+  analysisManager->CreateNtupleDColumn("edep_alpha_in");
+  analysisManager->CreateNtupleDColumn("edep_alpha_out");
+  analysisManager->CreateNtupleDColumn("edep_alpha_un");
+  analysisManager->CreateNtupleDColumn("edep_lead_in");
+  analysisManager->CreateNtupleDColumn("edep_lead_out");
+  analysisManager->CreateNtupleDColumn("edep_lead_un");
+  analysisManager->CreateNtupleDColumn("edep_other_in");
+  analysisManager->CreateNtupleDColumn("edep_other_out");
+  analysisManager->CreateNtupleDColumn("edep_other_un");
+  analysisManager->CreateNtupleDColumn("edep_tot_in");
+  analysisManager->CreateNtupleDColumn("edep_tot_out");
+  analysisManager->CreateNtupleDColumn("edep_tot_un");
 
   // Create the tracks branch
   analysisManager->CreateNtuple("tracks_data", "TracksData");             //ntuple-ID 2
@@ -80,10 +79,6 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   // Energy deposited
   analysisManager->CreateNtupleDColumn("distTravelled");
   analysisManager->CreateNtupleDColumn("enDeposited_tot");
-  analysisManager->CreateNtupleDColumn("enDeposited_wall");
-  analysisManager->CreateNtupleDColumn("enDeposited_surface");
-  analysisManager->CreateNtupleDColumn("enDeposited_cushion");
-  analysisManager->CreateNtupleDColumn("enDeposited_world");
   analysisManager->CreateNtupleDColumn("enDeposited_in");
   analysisManager->CreateNtupleDColumn("enDeposited_out");
 

@@ -43,8 +43,8 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   G4double x2 = 1*um;
   G4double y1 = sg->GetMinY() - 0.2*um;
   G4double y2 = sg->GetMaxY();
-  G4double z1 = sg->GetMinX() + 20*um;
-  G4double z2 = sg->GetMaxX() - 20*um;
+  G4double z1 = sg->GetMinX() + 30*um;
+  G4double z2 = sg->GetMaxX() - 30*um;
 
   // Get a pointer to the surface (for MC purposes)
   auto surface_solid = G4SolidStore::GetInstance()->GetSolid("RoughSurface");
@@ -102,12 +102,16 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   // printf("%.1f, %.1f, %.1f\n\n\n", x0/um, y0/um, z0/um);
   // fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
   // fParticleGun->GeneratePrimaryVertex(event);
+  G4double theta = G4UniformRand()*2*3.14159265;
+  G4double pz = cos(theta);
+  G4double py = sin(theta);
 
-  fParticleGun1->SetParticlePosition(G4ThreeVector(x0,y0,z0));
-  fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(0,1,0));
+
+  fParticleGun1->SetParticlePosition(G4ThreeVector(0,y0,z0));
+  fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(0,py,pz));
   fParticleGun1->GeneratePrimaryVertex(event);
 
-  fParticleGun2->SetParticlePosition(G4ThreeVector(x0,y0,z0));
-  fParticleGun2->SetParticleMomentumDirection(G4ThreeVector(0,-1,0));
+  fParticleGun2->SetParticlePosition(G4ThreeVector(0,y0,z0));
+  fParticleGun2->SetParticleMomentumDirection(G4ThreeVector(0,-py,-pz));
   fParticleGun2->GeneratePrimaryVertex(event);
 };

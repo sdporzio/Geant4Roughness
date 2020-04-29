@@ -1,6 +1,6 @@
-PTFE_NEVENTS=10
+PTFE_NEVENTS=20000
 PTFE_RANDOMSEED=111
-PTFE_VISUAL=1
+PTFE_VISUAL=0
 
 source /Users/sdporzio/Software/geant4.10.06.p01/install/bin/geant4.sh
 cd build

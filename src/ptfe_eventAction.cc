@@ -9,12 +9,17 @@
 #include "G4Event.hh"
 #include "G4VTrajectory.hh"
 #include "G4RadioactiveDecayBaseMessenger.hh"
+#include <time.h>
+
 
 
 ptfe_eventAction::ptfe_eventAction(ptfe_runAction* runAction)
 : G4UserEventAction(),
   fRunAction(runAction)
-{}
+{
+  time(&startTime);
+  time(&previousTime);
+}
 ptfe_eventAction::~ptfe_eventAction(){}
 
 void ptfe_eventAction::BeginOfEventAction(const G4Event* event)
@@ -25,18 +30,33 @@ void ptfe_eventAction::BeginOfEventAction(const G4Event* event)
   fEventSeed2 = CLHEP::HepRandom::getTheSeeds()[1];
 
   // Reset all the variables
-  fEnDep["World"] = 0;
-  fEnDep["Cushion"] = 0;
-  fEnDep["Wall"] = 0;
-  fEnDep["RoughSurface"] = 0;
+  fEnDep["alpha_in"] = 0;
+  fEnDep["alpha_out"] = 0;
+  fEnDep["alpha_un"] = 0;
+  fEnDep["lead_in"] = 0;
+  fEnDep["lead_out"] = 0;
+  fEnDep["lead_un"] = 0;
+  fEnDep["other_in"] = 0;
+  fEnDep["other_out"] = 0;
+  fEnDep["other_un"] = 0;
+  fEnDep["tot_in"] = 0;
+  fEnDep["tot_out"] = 0;
+  fEnDep["tot_un"] = 0;
 
-  fEnDep_vector["World"].clear();
-  fEnDep_vector["Cushion"].clear();
-  fEnDep_vector["Wall"].clear();
-  fEnDep_vector["RoughSurface"].clear();
+  fEnDep_vector["alpha_in"].clear();
+  fEnDep_vector["alpha_out"].clear();
+  fEnDep_vector["alpha_un"].clear();
+  fEnDep_vector["lead_in"].clear();
+  fEnDep_vector["lead_out"].clear();
+  fEnDep_vector["lead_un"].clear();
+  fEnDep_vector["other_in"].clear();
+  fEnDep_vector["other_out"].clear();
+  fEnDep_vector["other_un"].clear();
+  fEnDep_vector["tot_in"].clear();
+  fEnDep_vector["tot_out"].clear();
+  fEnDep_vector["tot_un"].clear();
 
   fAnaTrack.clear();
-
 }     
 
 void ptfe_eventAction::EndOfEventAction(const G4Event* event)
@@ -48,9 +68,22 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
   G4int totNumber = G4RunManager::GetRunManager()->GetNumberOfEventsToBeProcessed();
   G4int eNumber = event->GetEventID();
   G4float perc = (eNumber/(float) totNumber)*100.;
-  if((int) (perc*10000)%200000==0)
+  if((int) (perc*200000)%1000000==0)
   {
-    printf("Processing event %i/%i [%.0f%%]\n",eNumber,totNumber,perc);
+    time_t currentTime;
+    time(&currentTime);
+    G4double seconds = difftime(currentTime,previousTime);
+    G4double totSeconds = difftime(currentTime,startTime);
+    G4double secondsLeft = (totSeconds/float(perc))*(100-perc);
+    G4double secondsLeft_alt = (seconds/float(5))*(100-perc);
+    G4double aveLeft = (secondsLeft+secondsLeft_alt)/2.;
+    printf("Processing event %i/%i [%.0f%%] | ST: %i s | PETA: %im %is / %im %is | ETA: %im %is\n",eNumber,totNumber, perc, int(seconds),
+      int(floor(secondsLeft/60.)), int(secondsLeft)%60,
+      int(floor(secondsLeft_alt/60.)), int(secondsLeft_alt)%60,
+      int(floor(aveLeft/60.)), int(aveLeft)%60);
+
+    previousTime = currentTime;
+
   }
 
 
@@ -84,19 +117,18 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
   analysisManager->FillNtupleIColumn(1,i,fEventSeed1); i+=1;
   analysisManager->FillNtupleIColumn(1,i,fEventSeed2); i+=1;
 
-  analysisManager->FillNtupleIColumn(1,i,fEnDep_vector["World"].size()); i+=1;
-  analysisManager->FillNtupleIColumn(1,i,fEnDep_vector["Cushion"].size()); i+=1;
-  analysisManager->FillNtupleIColumn(1,i,fEnDep_vector["Wall"].size()); i+=1;
-  analysisManager->FillNtupleIColumn(1,i,fEnDep_vector["RoughSurface"].size()); i+=1;
-  analysisManager->FillNtupleIColumn(1,i,fEnDep_vector["Wall"].size()+fEnDep_vector["RoughSurface"].size()); i+=1;
-  analysisManager->FillNtupleIColumn(1,i,fEnDep_vector["World"].size()+fEnDep_vector["Cushion"].size()); i+=1;
-
-  analysisManager->FillNtupleDColumn(1,i,fEnDep["World"]); i+=1;
-  analysisManager->FillNtupleDColumn(1,i,fEnDep["Cushion"]); i+=1;
-  analysisManager->FillNtupleDColumn(1,i,fEnDep["Wall"]); i+=1;
-  analysisManager->FillNtupleDColumn(1,i,fEnDep["RoughSurface"]); i+=1;
-  analysisManager->FillNtupleDColumn(1,i,fEnDep["Wall"]+fEnDep["RoughSurface"]); i+=1;
-  analysisManager->FillNtupleDColumn(1,i,fEnDep["World"]+fEnDep["Cushion"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["alpha_in"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["alpha_out"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["alpha_un"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["lead_in"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["lead_out"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["lead_un"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["other_in"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["other_out"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["other_un"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["tot_in"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["tot_out"]); i+=1;
+  analysisManager->FillNtupleDColumn(1,i,fEnDep["tot_un"]); i+=1;
 
   analysisManager->AddNtupleRow(1);
 
@@ -141,12 +173,8 @@ void ptfe_eventAction::EndOfEventAction(const G4Event* event)
     // Energy deposited
     analysisManager->FillNtupleDColumn(2,j,thisTrack.distTravelled); j+=1;
     analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_tot); j+=1;
-    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_wall); j+=1;
-    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_surface); j+=1;
-    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_cushion); j+=1;
-    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_world); j+=1;
-    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_wall+thisTrack.enDeposited_surface); j+=1;
-    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_cushion+thisTrack.enDeposited_world); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_in); j+=1;
+    analysisManager->FillNtupleDColumn(2,j,thisTrack.enDeposited_out); j+=1;
 
     // Save this row
     analysisManager->AddNtupleRow(2);

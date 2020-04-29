@@ -34,6 +34,7 @@ class ptfe_eventAction : public G4UserEventAction
     std::map<G4String,std::vector<G4double>> fEnDep_vector;
     std::map<G4String,G4double> fEnDep; // MeV?
     G4long fEventSeedIndex, fEventSeed1, fEventSeed2;
+    time_t startTime, previousTime;
 };
 
 #endif

@@ -32,13 +32,31 @@ void ptfe_steppingAction::UserSteppingAction(const G4Step* step)
 
   // Get energy deposit per volume
   G4double edep = step->GetTotalEnergyDeposit()/CLHEP::keV;
-  fEventAction->AddEnDep(volumeName,edep);
+  if(volumeName=="RoughSurface")
+  {
+    if(pname=="alpha") fEventAction->AddEnDep("alpha_in",edep);
+    else if(pname=="Pb206") fEventAction->AddEnDep("lead_in",edep);
+    else fEventAction->AddEnDep("other_in",edep);
+    fEventAction->AddEnDep("tot_in",edep);
+  }
+  else if(volumeName=="World")
+  {
+    if(pname=="alpha") fEventAction->AddEnDep("alpha_out",edep);
+    else if(pname=="Pb206") fEventAction->AddEnDep("lead_out",edep);
+    else fEventAction->AddEnDep("other_out",edep);
+    fEventAction->AddEnDep("tot_out",edep);
+  }
+  else
+  {
+    if(pname=="alpha") fEventAction->AddEnDep("alpha_un",edep);
+    else if(pname=="Pb206") fEventAction->AddEnDep("lead_un",edep);
+    else fEventAction->AddEnDep("other_un",edep);
+    fEventAction->AddEnDep("tot_un",edep);
+  }
 
   // Take the current track and associated track ID
   G4Track* track = step->GetTrack();
   G4int track_id = track->GetTrackID();
-
-
 
   // Check if the anaTrack class has ever seen this track before
   // If it doesn't exist yet, create it and initialise it
@@ -82,17 +100,13 @@ void ptfe_steppingAction::UserSteppingAction(const G4Step* step)
     if(!(postpoint->GetPhysicalVolume())) fEventAction->fAnaTrack[track_id].volumeStart = "Unassigned";
     else fEventAction->fAnaTrack[track_id].volumeEnd = postpoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
     // Keep adding energy deposited and travelled length
-    fEventAction->fAnaTrack[track_id].enDeposited_wall = 0;
-    fEventAction->fAnaTrack[track_id].enDeposited_surface = 0;
-    fEventAction->fAnaTrack[track_id].enDeposited_cushion = 0;
-    fEventAction->fAnaTrack[track_id].enDeposited_world = 0;
+    fEventAction->fAnaTrack[track_id].enDeposited_in = 0;
+    fEventAction->fAnaTrack[track_id].enDeposited_out = 0;
     fEventAction->fAnaTrack[track_id].enDeposited_tot = 0;
     fEventAction->fAnaTrack[track_id].distTravelled = 0;
 
-    if(volumeName=="Wall") fEventAction->fAnaTrack[track_id].enDeposited_wall += edep;
-    else if(volumeName=="RoughSurface") fEventAction->fAnaTrack[track_id].enDeposited_surface += edep;
-    else if(volumeName=="Cushion") fEventAction->fAnaTrack[track_id].enDeposited_cushion += edep;
-    else if(volumeName=="World") fEventAction->fAnaTrack[track_id].enDeposited_world += edep;
+    if(volumeName=="RoughSurface") fEventAction->fAnaTrack[track_id].enDeposited_in += edep;
+    else if(volumeName=="World") fEventAction->fAnaTrack[track_id].enDeposited_out += edep;
     fEventAction->fAnaTrack[track_id].enDeposited_tot += edep;
     fEventAction->fAnaTrack[track_id].distTravelled += step->GetStepLength()/CLHEP::um;
   }
@@ -114,10 +128,9 @@ void ptfe_steppingAction::UserSteppingAction(const G4Step* step)
     if(!(postpoint->GetPhysicalVolume())) fEventAction->fAnaTrack[track_id].volumeStart = "Unassigned";
     else fEventAction->fAnaTrack[track_id].volumeEnd = postpoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
     // Keep adding energy deposited and travelled length
-    if(volumeName=="Wall") fEventAction->fAnaTrack[track_id].enDeposited_wall += edep;
-    else if(volumeName=="RoughSurface") fEventAction->fAnaTrack[track_id].enDeposited_surface += edep;
-    else if(volumeName=="Cushion") fEventAction->fAnaTrack[track_id].enDeposited_cushion += edep;
-    else if(volumeName=="World") fEventAction->fAnaTrack[track_id].enDeposited_world += edep;
+    if(volumeName=="RoughSurface") fEventAction->fAnaTrack[track_id].enDeposited_in += edep;
+    else if(volumeName=="World") fEventAction->fAnaTrack[track_id].enDeposited_out += edep;
+
     fEventAction->fAnaTrack[track_id].enDeposited_tot += edep;
     fEventAction->fAnaTrack[track_id].distTravelled += step->GetStepLength()/CLHEP::um;
   }
