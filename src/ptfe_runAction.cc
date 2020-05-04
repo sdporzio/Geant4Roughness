@@ -11,6 +11,8 @@ ptfe_runAction::ptfe_runAction() : G4UserRunAction()
   // Create the root manager
   auto analysisManager = G4Analysis::ManagerInstance("root");
   G4cout << "Using " << analysisManager->GetType() << G4endl;
+  G4cout << "Using " << analysisManager->GetFileName() << G4endl;
+
 
   // Default settings
   analysisManager->SetNtupleMerging(true);

@@ -22,6 +22,7 @@ ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruc
 {
   fMessenger = new G4GenericMessenger(this,"/ptfe/surface/","");
   fMessenger->DeclarePropertyWithUnit("contaminationDepth","um",fContaminationDepth,"");
+  fMessenger->DeclareProperty("surfaceType",fSurfaceType,"");
 }
 ptfe_detectorConstruction::~ptfe_detectorConstruction()
 {
@@ -42,7 +43,9 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
 
   //ROUGH SURFACE (1D)
   fSg = new ptfe_surfaceGenerator();
-  G4VSolid* solidWall = fSg->GenerateSurfaceSolid_1();
+  G4VSolid* solidWall;
+  if (fSurfaceType==1) solidWall = fSg->GenerateSurfaceSolid_1();
+  if (fSurfaceType==2) solidWall = fSg->GenerateSurfaceSolid_2();
 
 
   // WORLD

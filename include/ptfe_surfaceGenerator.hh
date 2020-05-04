@@ -10,7 +10,7 @@ class ptfe_surfaceGenerator
     virtual ~ptfe_surfaceGenerator();
 
     virtual G4VSolid* GenerateSurfaceSolid_1();
-    // virtual G4VSolid* GenerateSurfaceSolid_2();
+    virtual G4VSolid* GenerateSurfaceSolid_2();
     // virtual G4VSolid* GenerateSurfaceSolid_3();
     G4double GetMinY(){ return fMinY; }
     G4double GetMaxY(){ return fMaxY; }

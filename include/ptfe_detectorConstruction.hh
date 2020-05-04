@@ -23,6 +23,7 @@ class ptfe_detectorConstruction : public G4VUserDetectorConstruction
   private:
     G4GenericMessenger* fMessenger; // Generic messenger class
     G4double fContaminationDepth; // How deep in the surface does Po210 go
+    G4int fSurfaceType; // How deep in the surface does Po210 go
     ptfe_surfaceGenerator* fSg;
 
 };
