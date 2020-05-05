@@ -1,3 +1,30 @@
+/**************************************
+ *
+ * PoDepths.C
+ * A macro to model the depth of 210Po atoms present 
+ * after 222Rn exposure.  
+ *
+ * Atoms begin in the gas after a 222Rn decay.  
+ * Some fraction (user input) attach to the surface.  
+ * For each subsequent decay:
+ * -Calculate recoil direction and length
+ * -Atoms in gas stay in gas, others migrate within target (and can leave)
+ * 
+ * Created  Nov 19 2014  - Eric H. Miller
+ * Updated for PTFE work July 31 2017 - EHM
+ * Updated for Roughness studies May 4 2020 - Davide Porzio
+ *
+ ***************************************/
+
+
+/*** Recoil Energies ***
+* 214Pb: 6114.7 - 6002.4 keV = 112.3 keV 
+* 210Pb: 7833.5 - 7686.8 keV = 146.7 keV
+* 206Pb: 5407.5 - 5304.4 keV = 103.1 keV
+************************/
+
+TFile *f = new TFile("DepthTree.root","RECREATE");
+
 const double L206 = 458;
 const double L206e = 74;
 const double L210 = 579;
@@ -13,40 +40,34 @@ const double q214 = 1.0;
 const double q210 = 1.0;
 const double q206 = 0.77;  //???? Use 218 value. Not used. 
 
-//Atom Depths:
-TH1F* hD218;
-TH1F* hD214;
-TH1F* hD210;
-TH1F* hD206;
-
-//Recoil Energies:
-TH1F* hE214;
-TH1F* hE210;
-TH1F* hE206;
-
-//Recoil Ionization deposited:
-TH1F* hC214;
-TH1F* hC210;
-TH1F* hC206;
-
-TF1* f;
-
 enum STATE {gas, surface, buried};
 
 void PoDepths(int nEvents = 100000000)
 {
-  TFile *f = new TFile("DepthTree.root","RECREATE");
-  TTree *tree = new TTree("Tree","");
-  tree->Branch("Time",&time.year,"year/I:month:day:hour:minute:second:millisecond:date:clock");
 
-  TH1F* hD218 = new TH1F("D218", "Depth of Pb-218", 201, -10, 2000);
-  TH1F* hD214 = new TH1F("D214", "Depth of Pb-214", 201, -10, 2000);
-  TH1F* hD210 = new TH1F("D210", "Depth of Pb-210", 201, -10, 2000);
-  TH1F* hD206 = new TH1F("D206", "Depth of Pb-206", 201, -10, 2000);
+  TTree *Pb218 = new TTree("Pb218","Lead-218");
+  double D_Pb218, E_Pb218, C_Pb218;
+  Pb218->Branch("depth",&D_Pb218); // Atom depth
+  Pb218->Branch("energyFrac",&E_Pb218); // Recoil energy
+  Pb218->Branch("ionDeposited",&E_Pb218); // Recoil ionisation deposited
 
-  TH1F* hE214 = new TH1F("E214", "E Frac of Pb-214 RPR", 200, -0.5, 1.5);
-  TH1F* hE210 = new TH1F("E210", "E Frac of Pb-210 RPR", 200, -0.5, 1.5);
-  TH1F* hE206 = new TH1F("E206", "E Frac of Pb-206 RPR", 200, -0.5, 1.5);
+  TTree *Pb214 = new TTree("Pb214","Lead-214");
+  double D_Pb214, E_Pb214, C_Pb214;
+  Pb214->Branch("depth",&D_Pb214);
+  Pb214->Branch("energyFrac",&E_Pb214);
+  Pb214->Branch("ionDeposited",&E_Pb214);
+
+  TTree *Pb210 = new TTree("Pb210","Lead-210");
+  double D_Pb210, E_Pb210, C_Pb210;
+  Pb210->Branch("depth",&D_Pb210);
+  Pb210->Branch("energyFrac",&E_Pb210);
+  Pb210->Branch("ionDeposited",&E_Pb210);
+
+  TTree *Pb206 = new TTree("Pb206","Lead-206");
+  double D_Pb206, E_Pb206, C_Pb206;
+  Pb206->Branch("depth",&D_Pb206);
+  Pb206->Branch("energyFrac",&E_Pb206);
+  Pb206->Branch("ionDeposited",&E_Pb206);
 
   TRandom* tr = new TRandom3();
 
@@ -65,13 +86,13 @@ void PoDepths(int nEvents = 100000000)
     STATE state = gas;
     double depth = -10000; //begins in gas
 
-    //Rn-222 decay produces Po-218:
-
+    // Rn-222 decay produces Po-218:
+    // It's either in the gas, OR just on the surface.
     if (tr->Rndm() < q218) { depth = 0; state = surface; }
-    hD218->Fill(depth);
+    D_Pb218 = depth;
+    Pb218->Fill();
 
     //Po-218 decay produces Pb-214:
-
     R = tr->Gaus(L214, L214e);
     R = R*2.0*(tr->Rndm()-0.5);
     depth += R;
