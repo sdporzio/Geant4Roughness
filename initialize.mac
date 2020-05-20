@@ -1,10 +1,12 @@
 /control/getEnv PTFE_SURFTYPE
 /ptfe/surface/surfaceType {PTFE_SURFTYPE}
-/ptfe/surface/contaminationDepth 3 nm
+
+/control/getEnv PTFE_DEPTH
+/ptfe/surface/contaminationDepth {PTFE_DEPTH} nm
 
 /control/getEnv PTFE_ANAROOT
 /control/getEnv PTFE_SURFTYPE
-/analysis/setFileName {PTFE_SURFTYPE}_3nm_{PTFE_ANAROOT}
+/analysis/setFileName {PTFE_SURFTYPE}_{PTFE_DEPTH}nm_{PTFE_ANAROOT}
 
 /control/execute mac/verbose_settings.mac
 /run/initialize

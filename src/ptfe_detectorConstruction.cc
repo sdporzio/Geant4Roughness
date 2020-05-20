@@ -46,6 +46,7 @@ G4VPhysicalVolume* ptfe_detectorConstruction::Construct()
   G4VSolid* solidWall;
   if (fSurfaceType==1) solidWall = fSg->GenerateSurfaceSolid_1();
   if (fSurfaceType==2) solidWall = fSg->GenerateSurfaceSolid_2();
+  if (fSurfaceType==3) solidWall = fSg->GenerateSurfaceSolid_3();
 
 
   // WORLD

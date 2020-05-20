@@ -1,9 +1,10 @@
-PTFE_NEVENTS=20000
+PTFE_NEVENTS=10
 PTFE_RANDOMSEED=111
-PTFE_VISUAL=0
+PTFE_VISUAL=1
 
 export PTFE_ANAROOT="sim.root"
-export PTFE_SURFTYPE="2"
+export PTFE_SURFTYPE="3"
+export PTFE_DEPTH="10" #nm
 
 
 if [ "$GAL" == "/Users/sdporzio/Work/MOUNT/GALILEO" ]
