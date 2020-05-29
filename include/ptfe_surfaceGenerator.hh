@@ -17,6 +17,8 @@ class ptfe_surfaceGenerator
     G4double GetMinX(){ return fMinX; }
     G4double GetMaxX(){ return fMaxX; }
     G4double GetLength(){ return fLength; }
+    std::vector<G4double> GetHeightVector(){ return frOuter; }
+    G4double InterpoleHeight(G4double x);
 
   private:
   G4int fNumSide;
@@ -26,6 +28,7 @@ class ptfe_surfaceGenerator
   G4double fMinX;
   G4double fMaxX;
   G4double fLength;
+  std::vector<G4double> frOuter, fzPlane;
 };
 
 #endif

@@ -23,6 +23,7 @@ ptfe_detectorConstruction::ptfe_detectorConstruction() : G4VUserDetectorConstruc
   fMessenger = new G4GenericMessenger(this,"/ptfe/surface/","");
   fMessenger->DeclarePropertyWithUnit("contaminationDepth","um",fContaminationDepth,"");
   fMessenger->DeclareProperty("surfaceType",fSurfaceType,"");
+  fMessenger->DeclareProperty("onSurface",fOnSurface,"");
 }
 ptfe_detectorConstruction::~ptfe_detectorConstruction()
 {

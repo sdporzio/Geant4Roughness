@@ -43,8 +43,8 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   G4double x2 = 1*um;
   G4double y1 = sg->GetMinY() - 0.2*um;
   G4double y2 = sg->GetMaxY();
-  G4double z1 = sg->GetMinX() + 30*um;
-  G4double z2 = sg->GetMaxX() - 30*um;
+  G4double z1 = sg->GetMinX() + 40*um;
+  G4double z2 = sg->GetMaxX() - 40*um;
 
   // Get a pointer to the surface (for MC purposes)
   auto surface_solid = G4SolidStore::GetInstance()->GetSolid("RoughSurface");
@@ -76,25 +76,48 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   // PARTICLE ORIGIN POINT
   // We don't generate decays in the liquid xenon. Start from the assumption we generated outside. Keep throwind random x,y,z until we end up inside the surface
   G4bool isDepthWrong = true;
-  G4double x0, y0, z0;
+  G4double y0, z0;
   // x0 = G4UniformRand()*abs(x2-x1) + x1;
   // y0 = G4UniformRand()*abs(y2-y1) + y1;
   // z0 = G4UniformRand()*abs(z2-z1) + z1;
   G4int counter = 0;
-  while(isDepthWrong)
+  // Generate points EXACTLY on the surface
+  if(myDetector->DoOnSurface())
   {
-    // Generate random x,y point on the surface
-    x0 = G4UniformRand()*abs(x2-x1) + x1;
-    y0 = G4UniformRand()*abs(y2-y1) + y1;
     z0 = G4UniformRand()*abs(z2-z1) + z1;
-    G4ThreeVector loc(x0,y0,z0);
-    loc = loc - surface_origin;
-    G4bool isInside = (surface_solid->Inside(loc)==2);
-    G4bool isWithinContaminationDepth = (surface_solid->DistanceToOut(loc)<myDetector->GetContaminationDepth());
+    double surfPoint = sg->InterpoleHeight(z0);
+    // The stupidest and laziest way to check if point is ON surface
+    G4double epsilon = 0.00001; // PLEASE BE CAREFUL, IT'S HARD-CODED
+    G4ThreeVector aBitOut(0,surfPoint+epsilon,z0);
+    G4ThreeVector aBitIn(0,surfPoint-epsilon,z0);
+    aBitOut = aBitOut - surface_origin;
+    aBitIn = aBitIn - surface_origin;
+    // 0=out; 1=surf; 2=in
+    G4bool isOnSurf = ((surface_solid->Inside(aBitIn)==2) && (surface_solid->Inside(aBitOut)==0));
+    if(!isOnSurf)
+    {
+      printf("(0,%.4f,%.4f) is not inside.", surfPoint,z0);
+      throw "CATASTROPHIC ERROR (a bit exaggerating). Point is not on surface.";
+    }
+    y0 = surfPoint;
+  }
+  else
+  {
+    while(isDepthWrong)
+    {
+      // Generate random x,y point on the surface
+      y0 = G4UniformRand()*abs(y2-y1) + y1;
+      z0 = G4UniformRand()*abs(z2-z1) + z1;
+      G4ThreeVector loc(0,y0,z0);
+      loc = loc - surface_origin;
+      G4bool isInside = (surface_solid->Inside(loc)==2);
+      G4bool isWithinContaminationDepth = (surface_solid->DistanceToOut(loc)<myDetector->GetContaminationDepth());
 
-    // isDepthWrong = false;
-    isDepthWrong = !(isInside && isWithinContaminationDepth);
-    counter++;
+      // isDepthWrong = false;
+      isDepthWrong = !(isInside && isWithinContaminationDepth);
+      counter++;
+
+    }
 
   }
 
@@ -105,7 +128,6 @@ void ptfe_primaryGeneratorAction::GeneratePrimaries(G4Event* event)
   G4double theta = G4UniformRand()*2*3.14159265;
   G4double pz = cos(theta);
   G4double py = sin(theta);
-
 
   fParticleGun1->SetParticlePosition(G4ThreeVector(0,y0,z0));
   fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(0,py,pz));
